@@ -36,7 +36,7 @@
         $(".nav-btn").bind('click', function(ev){
 			var secid = this.href.split('#')[1];
 
-			classie.add(persContainer, 'transform');
+			/*classie.add(persContainer, 'transform');
 			
 			if( classie.has( perspectiveWrapper, 'animate') ) {
 				
@@ -46,7 +46,7 @@
 					
 					classie.remove(persContainer, 'transform');
 					// mac chrome issue:
-					document.body.scrollTop = document.documentElement.scrollTop = docscroll;
+					//document.body.scrollTop = document.documentElement.scrollTop = docscroll;
 					// change top of contentWrapper
 					setTimeout(function () {
 						//window.scrollTo(0, docscroll);
@@ -56,9 +56,23 @@
 	
 						var scrY = $("#" + secid).offset();
 						window.scrollTo({top:scrY.top, behavior:'smooth'});
-					},600);
+					},800);
 
 
+			}*/
+			if( classie.has( perspectiveWrapper, 'animate') ) {
+				$("#perspective").removeClass("animate"),
+							setTimeout(function () {
+								$("#perspective").removeClass("modalview");
+							}, 400);
+							setTimeout(function () {
+								window.scrollTo({top:docscroll,behavior:'auto'});
+		
+								contentWrapper.style.top = '0px';
+								var scrY = $("#" + secid).offset();
+						window.scrollTo({top:scrY.top, behavior:'smooth'});
+							},400);
+							
 			}
 
 		});
@@ -72,14 +86,18 @@
 			// mac chrome issue:
 			//document.body.scrollTop = document.documentElement.scrollTop = 0;
 			// add modalview class
-			classie.add( perspectiveWrapper, 'modalview' );
+			/*classie.add( perspectiveWrapper, 'modalview' );
 			// animate..
-			setTimeout( function() { classie.add( perspectiveWrapper, 'animate' ); }, 25 );
+			setTimeout( function() { classie.add( perspectiveWrapper, 'animate' ); }, 25 );*/
+			$("#perspective").addClass("modalview"),
+			setTimeout(function () {
+				$("#perspective").addClass("animate");
+			}, 25)
 		});
 
 		persContainer.addEventListener( clickevent, function( ev ) {
 		
-			classie.add(persContainer, 'transform');
+			/*classie.add(persContainer, 'transform');
 			
 			if( classie.has( perspectiveWrapper, 'animate') ) {
 				
@@ -98,8 +116,21 @@
 					},400);
 
 
-			}
-		});
+			}*/
+			if( classie.has( perspectiveWrapper, 'animate') ) {
+			$("#perspective").removeClass("animate"),
+                        setTimeout(function () {
+                            $("#perspective").removeClass("modalview");
+                        }, 400);
+						setTimeout(function () {
+							window.scrollTo({top:docscroll,behavior:'auto'});
+	
+							contentWrapper.style.top = '0px';
+						},400);
+						
+		}
+	});
+	
 
 		perspectiveWrapper.addEventListener( clickevent, function( ev ) { return false; } );
 	}

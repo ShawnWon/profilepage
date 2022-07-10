@@ -147,3 +147,5 @@
 
 
 }());
+
+/* About me slider */

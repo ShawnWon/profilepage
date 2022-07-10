@@ -19,7 +19,7 @@
 	<meta name="twitter:image" content="url(images/user-3.jpg)" />
 	<meta name="twitter:url" content="https://shawnwon.github.io/" />
 	<meta name="twitter:card" content="" />
-
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
 	<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
 	
@@ -27,6 +27,8 @@
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Awesome Icon-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/brands.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
 	<!-- Bootstrap  -->
 	<link rel="stylesheet" href="css/bootstrap.css">
 
@@ -35,11 +37,12 @@
 	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="css/demo.css" />
 	<link rel="stylesheet" type="text/css" href="css/component.css" />
-
+	<link rel="stylesheet" type="text/css" href="css/slick.css" />
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<script src="js/modernizr.custom.25376.js"></script>
+
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -57,11 +60,15 @@
 	<div class="fh5co-loader"></div>
 
 	
-	<div id="page">	
-	<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image:url(images/cover_bg_3.jpg);" data-stellar-background-ratio="0.5">
+	<div id="page">
+    <a id="home"></a>
+
+	<header id="fh5co-header" class="fh5co-cover js-fullheight container100" role="banner" style="background-image:url(images/cover_bg_3.jpg);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
-		<button id="showMenu">Show Menu</button>
-		<div class="container100">
+		<!--button id="showMenu">Show Menu</button-->
+		<span id="showMenu"><i class="fa-regular fa-compass"></i></span>
+
+		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="display-t js-fullheight">
@@ -84,7 +91,43 @@
 		</div>
 	</header>
 
-	<div id="fh5co-about" class="animate-box">
+	<a id="aboutme"></a>
+	<!-- About me -->
+	<section class="fh5co-about-me container100">
+		<div class="about-me-inner site-container">
+			<article class="portfolio-wrapper">
+				<div class="portfolio__img">
+					<img src="./images/about-me.jpg" class="about-me__profile" alt="about me profile picture">
+				</div>
+				<div class="portfolio__bottom">
+					<div class="portfolio__name">
+						<span>J</span>
+						<h2 class="universal-h2">hone Smith</h2>
+					</div>
+					<p>Jhone Smith is a short story author, novelist, and award-winning poet.</p>
+				</div>
+			</article>
+			<div class="about-me__text">
+				<div class="about-me-slider">
+					<div class="about-me-single-slide">
+						<h2 class="universal-h2 universal-h2-bckg">About me</h2>
+						<p><span>H</span> e has work appearing or forthcoming in over a dozen venues, including Buzzy Mag, The Spirit of Poe, and the British Fantasy Society journal Dark Horizons. He is also CEO of a company, specializing in custom book publishing and social media marketing services, have created a community for authors to learn and connect.He has work appearing or forthcoming in over a dozen venues, including Buzzy Mag, The Spirit of Poe, and have created a community for authors to learn and connect.</p>
+						<h4>Author</h4>
+						<p class="p-white">See me</p>
+					</div>
+					<div class="about-me-single-slide">
+						<h2 class="universal-h2 universal-h2-bckg">About me 2</h2>
+						<p><span>H</span> e has work appearing or forthcoming in over a dozen venues, including Buzzy Mag, The Spirit of Poe, and the British Fantasy Society journal Dark Horizons. He is also CEO of a company, specializing in custom book publishing and social media marketing services, have created a community for authors to learn and connect.He has work appearing or forthcoming in over a dozen venues, including Buzzy Mag, The Spirit of Poe, and have created a community for authors to learn and connect.</p>
+						<h4>Author</h4>
+						<p class="p-white">See me</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="about-me-bckg"></div>
+	</section>
+	<!-- About me end -->
+	<!--div id="fh5co-about" class="animate-box">
 		<div class="container100">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
@@ -110,14 +153,16 @@
 							<li><a href="https://medium.com/@shawnwang-dev"><i class="icon-twitter2"></i></a></li>
 							<li><a href="https://github.com/shawnwon"><i class="icon-github2"></i></a></li>
 							<li><a href="https://www.linkedin.com/in/shawn-wang-312066a5/"><i class="icon-linkedin2"></i></a></li>
-							<!--li><a href="#"><i class="icon-dribbble2"></i></a></li-->
+							<li><a href="#"><i class="icon-dribbble2"></i></a></li>
 						</ul>
 					</p>
 				</div>
 			</div>
 		</div>
-	</div>
-	<a id="portfolio">
+	</div-->
+	
+
+	<a id="portfolio">	</a>
 	<div id="fh5co-work" class="fh5co-bg-dark">
 		<div class="container100">
 			<div class="row animate-box">
@@ -193,9 +238,10 @@
 			</div>
 		</div>
 	</div>
-	</a>
+
+	<a id="myjourney"></a>
 	<div id="fh5co-resume" class="fh5co-bg-color">
-		<div class="container">
+		<div class="container100">
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
 					<h2>My Journey</h2>
@@ -332,7 +378,7 @@
 		</div>
 	</div>
 	
-
+	
 	<div id="fh5co-features" class="animate-box">
 		<div class="container100">
 			<div class="services-padding">
@@ -422,7 +468,7 @@
 			</div>
 		</div>
 	</div>
-
+	<a id="skillset"></a>
 	<div id="fh5co-skills" class="animate-box">
 		<div class="container100">
 			<div class="row">
@@ -529,7 +575,7 @@
 			</div>
 		</div>
 	</div>
-
+	
 	
 
 	<div id="fh5co-blog">
@@ -672,11 +718,11 @@
 
 </div>
 <nav class="outer-nav right vertical">
-	<a href="#" class="nav-btn">Home</a>
-	<a href="#" class="nav-btn">About Me</a>
-	<a href="#" class="nav-btn">My Journey</a>
-	<a href="/index.html#portfolio" class="nav-btn">Portfolio</a>
-	<a href="#" class="nav-btn">Skillset</a>
+	<a href="#home" class="nav-btn">Home</a>
+	<a href="#aboutme" class="nav-btn">About Me</a>
+	<a href="#myjourney" class="nav-btn">My Journey</a>
+	<a href="#portfolio" class="nav-btn">Portfolio</a>
+	<a href="#skillset" class="nav-btn">Skillset</a>
 </nav>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
@@ -695,6 +741,7 @@
 	<script src="js/google_map.js"></script-->
 	
 	<!-- Main -->
+
 	<script src="js/main.js"></script>
 	<script src="js/classie.js"></script>
     <script src="js/menu.js"></script>
