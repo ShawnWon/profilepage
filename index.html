@@ -33,21 +33,26 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 
 	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
+	
 	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="css/demo.css" />
 	<link rel="stylesheet" type="text/css" href="css/component.css" />
-	<link rel="stylesheet" type="text/css" href="css/slick.css" />
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
+
+	<!--script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script-->
+	<!-- Modernizr JS for nav menu -->
 	<script src="js/modernizr.custom.25376.js"></script>
 
+	<script src="js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<!-- swiper -->
+	<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
 
+	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+	
+	<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
 		
@@ -93,7 +98,7 @@
 
 	<a id="aboutme"></a>
 	<!-- About me -->
-	<section class="fh5co-about-me container100">
+	<!--section class="fh5co-about-me container100">
 		<div class="about-me-inner site-container">
 			<article class="portfolio-wrapper">
 				<div class="portfolio__img">
@@ -125,9 +130,9 @@
 			</div>
 		</div>
 		<div class="about-me-bckg"></div>
-	</section>
+	</section-->
 	<!-- About me end -->
-	<!--div id="fh5co-about" class="animate-box">
+	<div id="fh5co-about" class="animate-box">
 		<div class="container100">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
@@ -159,7 +164,7 @@
 				</div>
 			</div>
 		</div>
-	</div-->
+	</div>
 	
 
 	<a id="portfolio">	</a>
@@ -179,7 +184,7 @@
 						</div>
 					</a>
 				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
+				<!--div class="col-md-3 text-center col-padding animate-box">
 					<a href="#" class="work" style="background-image: url(images/pixplot.jpg);">
 						<div class="desc">
 							<h3>Pixplot of digital humanities</h3>
@@ -234,149 +239,75 @@
 							<span>Illustration</span>
 						</div>
 					</a>
-				</div>
+				</div-->
 			</div>
 		</div>
 	</div>
 
 	<a id="myjourney"></a>
-	<div id="fh5co-resume" class="fh5co-bg-color">
-		<div class="container100">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>My Journey</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 col-md-offset-0">
-					<ul class="timeline">
-						<li class="timeline-heading text-center animate-box">
-							<div><h3>Work Experience</h3></div>
-						</li>
-						<li class="animate-box timeline-inverted">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Software Developer</h3>
-									<span class="company">Yale-NUS College - Sep.2020 - Current</span>
-								</div>
-								<div class="timeline-body">
-									<p>As the main software developer for the project, developed the discovery platform of the Historical Map of South East Asia. (Geoblacklight - Ruby on Rails, Solr, IIIF)</p>
-								</div>
-							</div>
-						</li>
-						<li class="timeline-inverted animate-box">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Dotnet Developer</h3>
-									<span class="company">EON Reality · Internship - Mar 2020 - Jul 2020</span>
-								</div>
-								<div class="timeline-body">
-									<p>Worked in an Agile team of .NET developers for the continuously evolving AVR Portal website. Built new functions for admin portal and highly customized dynamic authorization system.</p>
-								</div>
-							</div>
-						</li>
-						<li class="timeline-heading text-center animate-box">
-							<div><h3>Education</h3></div>
-						</li>
-						<li class="timeline-unverted animate-box">
-							<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Postgraduate Diploma</h3>
-									<span class="company">National University of Singapore - 2019 - 2020</span>
-								</div>
-								<div class="timeline-body">
-									<p>Institute of System Science. Systematically analyse and design feasible IT solutions. Code, test and implement proposed solution in C#, ASP MVC, Java, Python and Android. Agile and CI/CD Practices.</p>
-								</div>
-							</div>
-						</li>
-						<li class="timeline-heading text-center animate-box">
-							<div><h3>Work Experience</h3></div>
-						</li>
-						<li class="animate-box timeline-inverted">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Market Development Manager</h3>
-									<span class="company">Lubrizol - Feb.2015 - Feb.2018</span>
-								</div>
-								<div class="timeline-body">
-									<p>With excellent analysis skills, successfully identified and commercialized new business opportunity in automotive industry and furniture decorative industry. Outstanding Service Award in 2016.</p>
-								</div>
-							</div>
-						</li>
-						<li class="animate-box timeline-inverted">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Sales Manager</h3>
-									<span class="company">Arkema - Aug.2008 - Jan.2015</span>
-								</div>
-								<div class="timeline-body">
-									<p>Responsible for developping CVD glass coating business in China mainland. Outstanding services award of 2012.</p>
-								</div>
-							</div>
-						</li>
-						<li class="animate-box timeline-inverted">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Sales Supervisor</h3>
-									<span class="company">Connell Bro. May.2006 - Aug.2008</span>
-								</div>
-								<div class="timeline-body">
-									<p>In charge of the business in functional additives of coating, ink & adhensive in north China.</p>
-								</div>
-							</div>
-						</li>
-						<li class="animate-box timeline-inverted">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Technical Sales Engineer</h3>
-									<span class="company">NCM Chemicals. - Oct.2003 - Apr.2006</span>
-								</div>
-								<div class="timeline-body">
-									<p>In charge of business in raw material for coating, ink & adhensive industry in north China.</p>
-								</div>
-							</div>
-						</li>
-						<li class="animate-box timeline-inverted">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Research Specialist</h3>
-									<span class="company">Sinopec - Jul.2001 - Sep.2003</span>
-								</div>
-								<div class="timeline-body">
-									<p>Develop new rubber products, optimize formula and process. Familiar with high molecular lab instrument.</p>
-								</div>
-							</div>
-						</li>
-						<br>
-						<li class="timeline-heading text-center animate-box">
-							<div><h3>Education</h3></div>
-						</li>
-						<li class="timeline-unverted animate-box">
-							<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Bachlor of Science</h3>
-									<span class="company">Chongqing University - Jul.1997 - Jul.2001</span>
-								</div>
-								<div class="timeline-body">
-									<p>The Bachelor of Science Degree in Chemistry prepares students for careers as professional chemists and serves as a foundation for careers in other fields.</p>
-								</div>
-							</div>
-						</li>
-						
-			    	</ul>
-				</div>
+	<div class="container100">
+		<div class="row animate-box">
+			<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+				<h2>My Journey</h2>
+
 			</div>
 		</div>
+
+			<!-- Slider main container -->
+			<div class="swiper">
+			<!-- Additional required wrapper -->
+			<div class="swiper-wrapper">
+				<!-- Slides -->
+				<div class="swiper-slide">
+					<div class="scard">
+						<div class="card show-scroll">
+						<div class="name">GIGI YEH</div>
+						<hr/>
+						<div class="title">Graphic Designer</div>
+						<div class="email">gigiyeh@company.com</div>
+						<div class="phone">0938-388-388</div>
+						
+				  </div></div></div>
+				<div class="swiper-slide">
+					<div class="scard">
+						<div class="card show-scroll">
+						<div class="name">GIGI YEH</div>
+						<hr/>
+						<div class="title">Graphic Designer</div>
+						<div class="email">gigiyeh@company.com</div>
+						<div class="phone">0938-388-388</div>
+
+					  </div></div>
+				</div>
+				<div class="swiper-slide"><div class="scard"><div class="row animate-box">
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+						<h2>My Journey</h2>
+					</div>
+				</div>Slide 4</div></div>
+				<div class="swiper-slide"><div class="scard"><div class="row animate-box">
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+						<h2>My Journey</h2>
+					</div>
+				</div>Slide 5</div></div>
+				<div class="swiper-slide"><div class="scard"><div class="row animate-box">
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+						<h2>My Journey</h2>
+					</div>
+				</div>Slide 6</div></div>
+			</div>
+			<!-- If we need pagination -->
+			<div class="swiper-pagination"></div>
+
+			<!-- If we need navigation buttons -->
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+
+			</div>
+
+
 	</div>
+
+	
 	
 	
 	<div id="fh5co-features" class="animate-box">
@@ -745,7 +676,7 @@
 	<script src="js/main.js"></script>
 	<script src="js/classie.js"></script>
     <script src="js/menu.js"></script>
-
+	<script src="js/timelin.js"></script>
 	</body>
 </html>
 
