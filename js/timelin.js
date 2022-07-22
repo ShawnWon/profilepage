@@ -1,4 +1,4 @@
-var swiper = new Swiper(".swiper", {
+var swiperjourney = new Swiper(".swiperjourney", {
   effect: "coverflow",
   grabCursor: true,
   centeredSlides: true,
@@ -10,6 +10,19 @@ var swiper = new Swiper(".swiper", {
     modifier: 1,
     slideShadows: false,
   },
+  pagination: {
+    el: ".swiper-pagination",
+    dynamicBullets: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
+
+var swiperportfolio = new Swiper(".swiperportfolio", {
+  effect: "cards",
+  grabCursor: true,
   pagination: {
     el: ".swiper-pagination",
     dynamicBullets: true,
