@@ -33,6 +33,38 @@ var swiperportfolio = new Swiper(".swiperportfolio", {
   },
 });
 
+var swiper = new Swiper(".swipermyblog", {
+  effect: "cube",
+  grabCursor: true,
+  cubeEffect: {
+    shadow: true,
+    slideShadows: true,
+    shadowOffset: 20,
+    shadowScale: 0.94,
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    dynamicBullets: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
+
+var swiper = new Swiper(".swiperaboutme", {
+  effect: "flip",
+  grabCursor: true,
+  pagination: {
+    el: ".swiper-pagination",
+    dynamicBullets: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
+
 var scroll = window.requestAnimationFrame ||
 function(callback){ window.setTimeout(callback, 1000/60)};
 var elementsToShow = document.querySelectorAll('.show-scroll'); 
