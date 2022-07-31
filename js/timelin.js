@@ -53,7 +53,7 @@ var swiper = new Swiper(".swipermyblog", {
 });
 
 var swiper = new Swiper(".swiperaboutme", {
-  effect: "flip",
+  effect: "cards",
   grabCursor: true,
   pagination: {
     el: ".swiper-pagination",
