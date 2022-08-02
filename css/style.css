@@ -770,7 +770,7 @@ h1, h2, h3, h4, h5, h6, figure {
   background-size: cover;
   width: 30%;
   height: 80%;
-  min-width:300px;
+  min-width:250px;
   max-width: 1200px;
 
   background-color: rgb(218, 245, 205);
