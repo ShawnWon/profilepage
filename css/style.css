@@ -735,21 +735,21 @@ h1, h2, h3, h4, h5, h6, figure {
 
 .swiperjourney {
   width: 100%;
-  height: 90%;
+  height: 80%;
   overflow:visible;
 }
 
 .swiperportfolio {
   margin: auto;
   width: 70%;
-  height: 90%;
+  height: 80%;
   overflow:visible;
 }
 
 .swipermyblog {
   margin: auto;
   width: 80%;
-  height: 70%;
+  height: 60%;
   overflow:visible;
 }
 
@@ -758,7 +758,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .swiperaboutme {
   margin: auto;
   width: 70%;
-  height: 90%;
+  height: 80%;
   overflow:visible;
 }
 
