@@ -12,7 +12,7 @@
 * ======================================================= */
 html {
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   scroll-behavior:smooth;
 }
 body {
@@ -783,7 +783,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 /*mobile*/
 @media screen and (max-width: 768px) {
-  .reduxthumb {
+  /*.reduxthumb {
     content:url("../images/reduxmobile.jpg");
   }
   
@@ -793,7 +793,7 @@ h1, h2, h3, h4, h5, h6, figure {
 
   .pixplotthumb {
     content:url("../images/pixplotmobile.jpg");
-  }
+  }*/
   .swiper-slide {
     max-width: 600px;
   }
@@ -885,7 +885,7 @@ h1, h2, h3, h4, h5, h6, figure {
   padding: 30px;
   border-style: solid;
   border-color:rgba(104, 112, 95, 0.9);
-  border-radius: 10px;
+  border-radius: 20px;
   margin: auto;
   background-color: white;
   transition: transform 4s 0.25s cubic-bezier(0, 1, 0.3, 1),
@@ -902,18 +902,22 @@ h1, h2, h3, h4, h5, h6, figure {
 .scard .card .name {
   font-size: 14px;
   margin: 4px auto 0px auto;
+  text-align: center;
 
 }
 
 .scard .card .title {
   font-size: 12px;
   margin: 4px auto 0px auto;
+  
+  text-align: center;
 
 }
 .scard .card .period {
   font-size: 12px;
   margin: 4px auto 0px auto;
 
+  text-align: center;
 }
 
 .scard .card .desc {
@@ -922,16 +926,19 @@ h1, h2, h3, h4, h5, h6, figure {
 
 }
 
-.thumb {
-  object-fit: contain;
-  height: 70%;
+.thumbwrapper {
+  width: 100%;
+  height: 60%;
+  overflow: hidden;
+  text-align: center;
 }
-.scard .thumb img {
-  width:100%;
-  height: 100%;
+.scard .thumbwrapper img {
+  max-width: 100%;
 }
 
-
+.aboutmecard {
+  padding: 0 !important;
+}
 
 .snip0057 {
   border-radius: 15px;
@@ -1059,10 +1066,18 @@ figure.snip0057 .position {
   color: #ffffff;
   background: #000000;
 }
-figure.snip0057.green .position {
-  background: #327e52;
+figure.snip0057.green1 .position {
+  background: #5d9946;
 }
-
+figure.snip0057.green2 .position {
+  background: #4b8b16;
+}
+figure.snip0057.green3 .position {
+  background: #69d395;
+}
+figure.snip0057.green4 .position {
+  background: #06aa73;
+}
 figure.snip0057:hover figcaption,
 figure.snip0057.hover figcaption {
   bottom: 40px;
@@ -1099,4 +1114,53 @@ figure.snip0057.hover:before {
   100% {
     left: 0px;
   }
+}
+
+/*Arrow down */
+.ca3-scroll-down-arrow {
+	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2hldnJvbl90aGluX2Rvd24iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiBmaWxsPSJ3aGl0ZSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBhdGggZD0iTTE3LjQxOCw2LjEwOWMwLjI3Mi0wLjI2OCwwLjcwOS0wLjI2OCwwLjk3OSwwYzAuMjcsMC4yNjgsMC4yNzEsMC43MDEsMCwwLjk2OWwtNy45MDgsNy44M2MtMC4yNywwLjI2OC0wLjcwNywwLjI2OC0wLjk3OSwwbC03LjkwOC03LjgzYy0wLjI3LTAuMjY4LTAuMjctMC43MDEsMC0wLjk2OWMwLjI3MS0wLjI2OCwwLjcwOS0wLjI2OCwwLjk3OSwwTDEwLDEzLjI1TDE3LjQxOCw2LjEwOXoiLz48L3N2Zz4=);
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.ca3-scroll-down-link {
+  cursor:pointer;
+	height: 60px;
+	width: 80px;
+	margin: 0px 0 0 -40px;
+	line-height: 60px;
+	position: absolute;
+	left: 50%;
+	/*bottom: 0px;*/
+	color: #FFF;
+	text-align: center;
+	font-size: 70px;
+	z-index: 100;
+	text-decoration: none;
+	text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
+
+	-webkit-animation: ca3_fade_move_down 2s ease-in-out infinite;
+	-moz-animation:    ca3_fade_move_down 2s ease-in-out infinite;
+	animation:         ca3_fade_move_down 2s ease-in-out infinite;
+}
+
+.bg-dark {
+  filter:invert(50%);
+}
+
+/*animated scroll arrow animation*/
+@-webkit-keyframes ca3_fade_move_down {
+  0%   { -webkit-transform:translate(0,-20px); opacity: 0;  }
+  50%  { opacity: 1;  }
+  100% { -webkit-transform:translate(0,20px); opacity: 0; }
+}
+@-moz-keyframes ca3_fade_move_down {
+  0%   { -moz-transform:translate(0,-20px); opacity: 0;  }
+  50%  { opacity: 1;  }
+  100% { -moz-transform:translate(0,20px); opacity: 0; }
+}
+@keyframes ca3_fade_move_down {
+  0%   { transform:translate(0,-20px); opacity: 0;  }
+  50%  { opacity: 1;  }
+  100% { transform:translate(0,20px); opacity: 0; }
 }
