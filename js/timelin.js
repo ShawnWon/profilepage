@@ -21,8 +21,14 @@ var swiperjourney = new Swiper(".swiperjourney", {
 });
 
 var swiperportfolio = new Swiper(".swiperportfolio", {
-  effect: "cards",
+  effect: "cube",
   grabCursor: true,
+  cubeEffect: {
+    shadow: true,
+    slideShadows: true,
+    shadowOffset: 20,
+    shadowScale: 0.94,
+  },
   pagination: {
     el: ".swiper-pagination",
     dynamicBullets: true,
@@ -53,8 +59,17 @@ var swiper = new Swiper(".swipermyblog", {
 });
 
 var swiper = new Swiper(".swiperaboutme", {
-  effect: "cards",
+  effect: "coverflow",
   grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: "auto",
+  coverflowEffect: {
+    rotate: 50,
+    stretch: 0,
+    depth: 100,
+    modifier: 1,
+    slideShadows: false,
+  },
   pagination: {
     el: ".swiper-pagination",
     dynamicBullets: true,

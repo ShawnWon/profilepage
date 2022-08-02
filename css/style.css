@@ -741,15 +741,15 @@ h1, h2, h3, h4, h5, h6, figure {
 
 .swiperportfolio {
   margin: auto;
-  width: 70%;
-  height: 80%;
+  width: 80%;
+  height: 70%;
   overflow:visible;
 }
 
 .swipermyblog {
   margin: auto;
   width: 80%;
-  height: 60%;
+  height: 70%;
   overflow:visible;
 }
 
@@ -757,7 +757,7 @@ h1, h2, h3, h4, h5, h6, figure {
 
 .swiperaboutme {
   margin: auto;
-  width: 70%;
+  width: 100%;
   height: 80%;
   overflow:visible;
 }
@@ -1146,6 +1146,10 @@ figure.snip0057.hover:before {
 
 .bg-dark {
   filter:invert(50%);
+}
+
+.bg-dark-btn {
+  color:rgb(218, 245, 205)
 }
 
 /*animated scroll arrow animation*/
