@@ -1249,13 +1249,13 @@ figure.snip0057.hover:before {
 .card__svg {
   position: absolute;
   left: 0;
-  top:20%;
+  top:0;
   width:100%;
   height:100%;
 }
 @media only screen and (max-width: 726px) {
  .card__svg {
-  top: 17%;
+  top: 0;
  }
 }
 @keyframes LineFadeIn {
