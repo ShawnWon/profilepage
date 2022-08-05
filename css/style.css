@@ -736,21 +736,21 @@ h1, h2, h3, h4, h5, h6, figure {
 
 .swiperjourney {
   width: 100%;
-  height: 80%;
+  height: 100vh;
   overflow:visible;
 }
 
 .swiperportfolio {
   margin: auto;
   width: 80%;
-  height: 70%;
+  height: 100vh;
   overflow:visible;
 }
 
 .swipermyblog {
   margin: auto;
   width: 80%;
-  height: 70%;
+  height: 100vh;
   overflow:visible;
 }
 
@@ -759,10 +759,12 @@ h1, h2, h3, h4, h5, h6, figure {
 .swiperaboutme {
   margin: auto;
   width: 100%;
-  height: 80%;
+  height: 100vh;
   overflow:visible;
 }
-
+.swiper-wrapper {
+  height: initial;
+}
 .swiper-button-next, .swiper-button-prev {
   color:rgba(104, 112, 95);
 }
@@ -782,22 +784,17 @@ h1, h2, h3, h4, h5, h6, figure {
 .swiper-pagination-bullet-active {
   background-color:rgb(44, 49, 38);
 }
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom:initial;
+}
 /*mobile*/
 @media screen and (max-width: 768px) {
-  /*.reduxthumb {
-    content:url("../images/reduxmobile.jpg");
-  }
-  
-  .mapthumb {
-    content:url("../images/mapmobile.jpg");
-  }
 
-  .pixplotthumb {
-    content:url("../images/pixplotmobile.jpg");
-  }*/
   .swiper-slide {
     max-width: 600px;
   }
+
+
   #fh5co-header .display-tc h1,
   .fh5co-cover .display-tc h1 {
     font-size: 34px;
@@ -941,15 +938,23 @@ h1, h2, h3, h4, h5, h6, figure {
 
 }
 
+
 .thumbwrapper {
   width: 100%;
-  height: 60%;
+  height: 80%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
-  text-align: center;
+  border-radius: 10px;
 }
-.scard .thumbwrapper img {
+.scard .thumbwrapper a .thumb {
   max-width: 100%;
+  max-height: 100%;
+  flex-shrink: 1;
+
 }
+
 
 .aboutmecard {
   padding: 0 !important;
@@ -1289,3 +1294,4 @@ figure.snip0057.hover:before {
     filter: blur(0);
   }
 }
+
