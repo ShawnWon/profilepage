@@ -1219,7 +1219,7 @@ figure.snip0057.hover:before {
 .card__image {
   opacity: 0;
   width: 100%;
-  aspect-ratio: 1/0.9;
+  aspect-ratio: 1/1.07;
 }
 .card__image__anima {
   animation: ImageFadeIn 0.8s 1.4s forwards;
