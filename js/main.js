@@ -137,8 +137,8 @@
 	//adjust img aspect ratio
 	var adjustImgRatio = function() {
 		console.log(screen.height/screen.width);
-		if (window.innerHeight/window.innerWidth < 1.15)
-		{$(".card__image").css("margin-top", (window.innerHeight/window.innerWidth -1.15)*200  - 15  +"px");}
+		if (window.innerHeight/window.innerWidth < 1.45)
+		{$(".card__image").css("margin-top", (window.innerHeight/window.innerWidth -1.45)*50  - 20  +"px");}
 	}
 	
 	$(function(){
