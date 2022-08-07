@@ -134,6 +134,12 @@
 		$(".fh5co-loader").delay(2000).fadeOut(2000);
 	};
 
+	//adjust img aspect ratio
+	var adjustImgRatio = function() {
+		console.log(screen.height/screen.width);
+		if (screen.height/screen.width < 1.16)
+		{$(".card__image").css("margin-top", (screen.height/screen.width -1.16)*200  - 10  +"px");}
+	}
 	
 	$(function(){
 		contentWayPoint();
@@ -143,6 +149,7 @@
 		parallax();
 		// pieChart();
 		skillsWayPoint();
+		adjustImgRatio();
 	});
 
 	var words = ['Software Developer', 'System Analyst', 'Cyclist', 'Photographer'],
