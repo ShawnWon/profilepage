@@ -138,7 +138,7 @@
 	var adjustImgRatio = function() {
 		console.log(screen.height/screen.width);
 		if (screen.height/screen.width < 1.16)
-		{$(".card__image").css("margin-top", (screen.height/screen.width -1.16)*200  - 10  +"px");}
+		{$(".card__image").css("margin-top", (screen.height/screen.width -1.16)*200  - 30  +"px");}
 	}
 	
 	$(function(){
