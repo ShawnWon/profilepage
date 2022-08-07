@@ -897,6 +897,7 @@ h1, h2, h3, h4, h5, h6, figure {
   will-change: transform, opacity;
   opacity:0;
   transform: translateX(-30px);
+  overflow: hidden;
 }
 
 .scard .card.scroll-visible {
@@ -938,7 +939,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .scard .card .desc {
   font-size: 12px;
   margin: 7px auto 0px auto;
-
+  text-align: center;
 }
 
 
@@ -1064,7 +1065,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .card__line__anima {
-  animation: LineFadeIn 0.8s 0.8s forwards ease-in;
+  animation: LineFadeIn 0.8s 0.8s forwards;
 }
 .card__image {
   opacity: 0;
