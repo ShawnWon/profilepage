@@ -136,9 +136,16 @@
 
 	//adjust img aspect ratio
 	var adjustImgRatio = function() {
-		console.log(screen.height/screen.width);
-		if (window.innerHeight/window.innerWidth < 1.45)
-		{$(".card__image").css("margin-top", (window.innerHeight/window.innerWidth -1.45)*50  - 20  +"px");}
+		console.log(window.innerHeight/window.innerWidth);
+		if (window.innerHeight/window.innerWidth < 1.25)
+		{
+			$(".card__image").css("margin-top", (window.innerHeight/window.innerWidth -1.25)*50  - 20  +"px");
+			$(".card__cover").show();
+		}
+		if (window.innerHeight/window.innerWidth < 0.7)
+		{
+			$(".card__cover").hide();
+		}
 	}
 	
 	$(function(){

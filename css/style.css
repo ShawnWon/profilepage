@@ -1087,6 +1087,15 @@ h1, h2, h3, h4, h5, h6, figure {
   height: 50%;
 
 }
+.card__cover {
+  background-color:#434940 ;
+  width:100%;
+  height:30%;
+  position: absolute;
+  bottom:0;
+  margin-left:-20px;
+  margin-right: -20px;
+}
 .card__content__anima {
   animation: ContentFadeIn 0.8s 1.6s forwards;
 }
