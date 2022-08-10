@@ -23,7 +23,7 @@ body {
   color: #4d4d4d;
   background: rgb(185, 228, 169);
   height: 100%;
-  
+
 }
 i {
   font-style: normal;
@@ -1113,7 +1113,9 @@ h1, h2, h3, h4, h5, h6, figure {
   top:20%;
   width:100%;
   height:100%;
-  opacity:0;
+  -webkit-transform:translate3d(0,0,0);
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
 }
 @media only screen and (max-width: 726px) {
  .card__svg {
