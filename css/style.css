@@ -1142,12 +1142,12 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .card__curve {
-  -webkit-perspective: 1000;
-  -webkit-backface-visibility: hidden;
-  -webkit-transform:translate3d(0,0,0);
-  -webkit-transform-style:preserve-3d;
-  }
+    -webkit-perspective: 1000;
+-webkit-backface-visibility: hidden;
+-webkit-transform:translate3d(0,0,0);
+-webkit-transform-style:preserve-3d;
 }
+
 @media only screen and (max-width: 726px) {
  .card__svg {
   top: 0;
