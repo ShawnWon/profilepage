@@ -1107,7 +1107,7 @@ h1, h2, h3, h4, h5, h6, figure {
   margin-top: 3rem;
   opacity: 0;
   height: 50%;
-
+  z-index: 99;
 }
 .card__cover {
   background-color:#434940 ;
