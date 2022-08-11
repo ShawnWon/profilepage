@@ -40,9 +40,9 @@ hr {
   overflow-x: hidden;
   width: 100%;
   height: 100vh;
-  -webkit-transition: 0.5s;
+  /*-webkit-transition: 0.5s;
   -o-transition: 0.5s;
-  transition: 0.5s;
+  transition: 0.5s;*/
   scroll-snap-type: y mandatory;
   /*overflow-y: scroll;*/
 
