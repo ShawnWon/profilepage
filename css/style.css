@@ -1065,7 +1065,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .card__line__anima {
-  animation: LineFadeIn 0.8s 0.8s forwards;
+  animation: LineFadeIn 0.8s 0.8s forwards ease-in;
 }
 .card__image {
   opacity: 0;
