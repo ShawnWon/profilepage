@@ -1053,9 +1053,7 @@ h1, h2, h3, h4, h5, h6, figure {
   box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.2), 0 0 1rem rgba(0, 0, 0, 0.2);
   overflow: hidden;
   margin: 10px;
-  
-  -webkit-perspective: 1000;
-  -webkit-backface-visibility: hidden;
+
 }
 .card__image-container {
   margin: -2rem -2rem 1rem -2rem;
