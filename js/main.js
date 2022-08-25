@@ -221,6 +221,45 @@ var wordflick = function () {
 $(document).ready(function () {
 	
   wordflick();
+
+  $("#headerarrow").on('click',function(event) {
+	event.preventDefault();
+	event.stopImmediatePropagation();
+	const el = document.getElementById('page');
+	el.scrollBy({
+		top:1,
+		behavior:'smooth'
+	});
+});
+
+$("#portfolioarrow").on('click',function(event) {
+	event.preventDefault();
+	event.stopImmediatePropagation();
+	const el = document.getElementById('page');
+	el.scrollBy({
+		top:2,
+		behavior:'smooth'
+	});
+});
+$("#journeyarrow").on('click',function(event) {
+	event.preventDefault();
+	event.stopImmediatePropagation();
+	const el = document.getElementById('page');
+	el.scrollBy({
+		top:3,
+		behavior:'smooth'
+	});
+});
+$("#blogarrow").on('click',function(event) {
+	event.preventDefault();
+	event.stopImmediatePropagation();
+	const el = document.getElementById('page');
+	el.scrollBy({
+		top:4,
+		behavior:'smooth'
+	});
+});
+
 });
 
 }());
