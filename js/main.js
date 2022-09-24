@@ -175,7 +175,7 @@
 
 	});
 
-	var words = ['Software Developer', 'System Analyst', 'Cyclist', 'Photographer'],
+	var words = ['Software Developer','AWS Cloud Practitioner','System Analyst', 'Cyclist', 'Photographer'],
     part,
     i = 0,
     offset = 0,
