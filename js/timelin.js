@@ -21,13 +21,16 @@ var swiperjourney = new Swiper(".swiperjourney", {
 });
 
 var swiperportfolio = new Swiper(".swiperportfolio", {
-  effect: "cube",
+  effect: "coverflow",
   grabCursor: true,
-  cubeEffect: {
-    shadow: true,
-    slideShadows: true,
-    shadowOffset: 20,
-    shadowScale: 0.94,
+  centeredSlides: true,
+  slidesPerView: "auto",
+  coverflowEffect: {
+    rotate: 50,
+    stretch: 0,
+    depth: 100,
+    modifier: 1,
+    slideShadows: false,
   },
   pagination: {
     el: ".swiper-pagination",
@@ -40,13 +43,16 @@ var swiperportfolio = new Swiper(".swiperportfolio", {
 });
 
 var swiper = new Swiper(".swipermyblog", {
-  effect: "cube",
+  effect: "coverflow",
   grabCursor: true,
-  cubeEffect: {
-    shadow: true,
-    slideShadows: true,
-    shadowOffset: 20,
-    shadowScale: 0.94,
+  centeredSlides: true,
+  slidesPerView: "auto",
+  coverflowEffect: {
+    rotate: 50,
+    stretch: 0,
+    depth: 100,
+    modifier: 1,
+    slideShadows: false,
   },
   pagination: {
     el: ".swiper-pagination",
