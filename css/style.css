@@ -687,7 +687,8 @@ h1, h2, h3, h4, h5, h6, figure {
 .scard .card {
   position: relative;
   width: 95%;
-  height:60vh;
+  height:auto;
+  min-height:60vh;
   padding: 15px;
   border-style: solid;
   border-color:rgba(104, 112, 95, 0.9);
@@ -702,7 +703,6 @@ h1, h2, h3, h4, h5, h6, figure {
   will-change: transform, opacity;
   opacity:0;
   transform: translateX(-30px);
-  overflow: hidden;
   margin: 0 auto;
   max-height: 800px;
 }
@@ -762,6 +762,7 @@ h1, h2, h3, h4, h5, h6, figure {
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   padding-top:20px;
+  margin-top: 0 !important;
 }
 .scard .thumbwrapper a .thumb {
   max-width: 100%;
@@ -904,7 +905,7 @@ h1, h2, h3, h4, h5, h6, figure {
   opacity: 0;
   height: 50%;
   z-index: 99;
-
+  color: white;
   -webkit-perspective: 1000;
   -webkit-backface-visibility: hidden;
   -webkit-transform:translate3d(0,0,0);
