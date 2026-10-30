@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 	<head>
 	<meta charset="utf-8">
@@ -66,6 +66,18 @@
 
   gtag('config', 'G-NP3H1S508P');
 </script>
+		<!-- Theme Detection to prevent FOUC -->
+	<script>
+		(function() {
+			var t = localStorage.getItem('shawn_portfolio_theme');
+			if (t === 'classic') {
+				document.documentElement.classList.add('theme-classic');
+				document.addEventListener('DOMContentLoaded', function() {
+					document.body.classList.add('theme-classic');
+				});
+			}
+		})();
+	</script>
 	</head>
 	<body>
 
@@ -206,7 +218,7 @@
 						
 						<div class="name card__line">Digital Historical Maps of Southeast Asia</div>
 						<hr/>
-						<div class="title card__line">The Digital Historical Maps of Singapore and Southeast Asia project is funded by Singapore's Ministry of Education Social Science Research (SSR) Thematic Grant. The platform seeks to enhance public and scholarly access to and understanding of historic maps of Southeast Asia.</div>
+						<div class="desc card__line">The Digital Historical Maps of Singapore and Southeast Asia project is funded by Singapore's Ministry of Education Social Science Research (SSR) Thematic Grant. The platform seeks to enhance public and scholarly access to and understanding of historic maps of Southeast Asia.</div>
 						
 						<div class="thumbwrapper card__image"><a href="https://historicalmaps.yale-nus.edu.sg/" target="_blank"><img class="thumb" src="images/map1.jpg" /></a></div>
 						
@@ -216,7 +228,7 @@
 						<div class="card show-scroll">
 						<div class="name card__line">PixPlot</div>
 						<hr/>
-						<div class="title card__line">This page visualizes a large image collection within an interactive WebGL scene. Each image was processed with an Inception Convolutional Neural Network, trained on ImageNet 2012, and projected into a two-dimensional manifold with the UMAP algorithm such that similar images appear proximate to one another. </div>
+						<div class="desc card__line">This page visualizes a large image collection within an interactive WebGL scene. Each image was processed with an Inception Convolutional Neural Network, trained on ImageNet 2012, and projected into a two-dimensional manifold with the UMAP algorithm such that similar images appear proximate to one another. </div>
 						<div class="thumbwrapper card__image"><a href="https://shawnwon.github.io/pixplotdemo/" target="_blank"><img class="thumb" src="images/pixplot.jpg" /></a></div>
 						
 				  </div></div></div>
@@ -280,121 +292,148 @@
 				<div class="swiper-slide">
 					<div class="scard">
 						<div class="card show-scroll">
-							<img width="48" src="images/ync.jpg" height="48">
-						    <div class="bannerwrapper">
-						<div class="name card__line">Yale-NUS College</div>
-						<div class="title card__line">Software Developer</div></div>
-						<hr/>
-
-						<div class="period card__line">Sep 2020 - Present</div>
-						<div class="desc card__line">As the main software developer, utilises the knowledge in Ruby on Rails, Solr, and the International Interoperability Image Framework (IIIF) in concert with his skills in JavaScript, Python to develop the <a href="https://historicalmaps.yale-nus.edu.sg" target="_blank">Digital Historical Maps</a> platform.</div>
-						
-				  </div></div></div>
-				  <div class="swiper-slide">
-					<div class="scard">
-						<div class="card show-scroll">
-							<img width="48" src="images/eon.jpg" height="48">
-						    <div class="bannerwrapper">
-						<div class="name card__line">EON Reality</div>
-						<div class="title card__line">.Net Developer Intern</div></div>
-						<hr/>
-
-						<div class="period card__line">Mar 2020 - Jul 2020</div>
-						<div class="desc card__line">Worked in an Agile team of .NET developers for the continuously evolving AVR Portal website.</div>
-						
-				  </div></div></div>
-				  <div class="swiper-slide">
-					<div class="scard">
-						<div class="card show-scroll">
-							<img width="48" src="images/nus.jpg" height="48">
-						    <div class="bannerwrapper">
-						<div class="name card__line">National University</div>
-						<div class="name2 card__line">of Singapore</div>
-						<div class="title card__line">Full time student</div></div>
-						<hr/>
-
-						<div class="period card__line">Jul 2019 - Jul 2020</div>
-						<div class="desc card__line">Graduate Diploma in System Analysis. Code, test and implement proposed solution in C#, ASP MVC, Java, Python and Android. Agile and CI/CD Practices. Systematically analyse and design feasible IT solutions.</div>
-						
-				  </div></div></div>
-				  <div class="swiper-slide">
-					<div class="scard">
-						<div class="card show-scroll">
-							<img width="48" src="images/lubr.jpg" height="48">
-						    <div class="bannerwrapper">
-						<div class="name card__line">Lubrizol Management</div>
-						<div class="title card__line">Market Development Manager</div></div>
-						<hr/>
-
-						<div class="period card__line">Feb 2015 - Feb 2018</div>
-						<div class="desc card__line">With excellent analysis skills, successfully identified and commercialized new business opportunity in automotive industry and furniture decorative industry. Outstanding Service Award in 2016.
+							<div class="journey-header">
+								<img width="48" src="images/ync.jpg" height="48" alt="Yale-NUS College">
+								<div class="bannerwrapper">
+									<div class="name card__line">Yale-NUS College</div>
+									<div class="title card__line">Software Developer</div>
+								</div>
 							</div>
-						
+							<hr/>
+
+							<div class="period card__line">Sep 2020 - Present</div>
+							<div class="desc card__line">As the main software developer, utilises the knowledge in Ruby on Rails, Solr, and the International Interoperability Image Framework (IIIF) in concert with his skills in JavaScript, Python to develop the <a href="https://historicalmaps.yale-nus.edu.sg" target="_blank">Digital Historical Maps</a> platform.</div>
+							
 				  </div></div></div>
 				  <div class="swiper-slide">
 					<div class="scard">
 						<div class="card show-scroll">
-							<img width="48" src="images/arkema.jpg" height="48">
-						    <div class="bannerwrapper">
-						<div class="name card__line">Arkema Investment</div>
-						<div class="title card__line">Sales Manager</div></div>
-						<hr/>
+							<div class="journey-header">
+								<img width="48" src="images/eon.jpg" height="48" alt="EON Reality">
+								<div class="bannerwrapper">
+									<div class="name card__line">EON Reality</div>
+									<div class="title card__line">.Net Developer Intern</div>
+								</div>
+							</div>
+							<hr/>
 
-						<div class="period card__line">Aug 2008 - Jan 2015</div>
-						<div class="desc card__line">Manage the glass coating business in China mainland. Organize and provide technical support to CVD project's installation and commissioning.Outstanding Service Award in 2012.</div>
-						
+							<div class="period card__line">Mar 2020 - Jul 2020</div>
+							<div class="desc card__line">Worked in an Agile team of .NET developers for the continuously evolving AVR Portal website.</div>
+							
 				  </div></div></div>
 				  <div class="swiper-slide">
 					<div class="scard">
 						<div class="card show-scroll">
-							<img width="48" src="images/connell.jpg" height="48">
-						    <div class="bannerwrapper">
-						<div class="name card__line">Connell Bros. Co.</div>
-						<div class="title card__line">Sales Executive</div></div>
-						<hr/>
+							<div class="journey-header">
+								<img width="48" src="images/nus.jpg" height="48" alt="National University of Singapore">
+								<div class="bannerwrapper">
+									<div class="name card__line">National University</div>
+									<div class="name2 card__line">of Singapore</div>
+									<div class="title card__line">Full time student</div>
+								</div>
+							</div>
+							<hr/>
 
-						<div class="period card__line">May 2006 - Aug 2008</div>
-						<div class="desc card__line">Promote functional additives of coating, ink & adhesive in north China. Introduce high value added chemicals into market.</div>
-						
+							<div class="period card__line">Jul 2019 - Jul 2020</div>
+							<div class="desc card__line">Graduate Diploma in System Analysis. Code, test and implement proposed solution in C#, ASP MVC, Java, Python and Android. Agile and CI/CD Practices. Systematically analyse and design feasible IT solutions.</div>
+							
 				  </div></div></div>
 				  <div class="swiper-slide">
 					<div class="scard">
 						<div class="card show-scroll">
-							<img width="48" src="images/hersbit.jpg" height="48">
-						    <div class="bannerwrapper">
-						<div class="name card__line">NCM Chemical Co.,Ltd</div>
-						<div class="title card__line">Technical Sales Engineer</div></div>
-						<hr/>
+							<div class="journey-header">
+								<img width="48" src="images/lubr.jpg" height="48" alt="Lubrizol Management">
+								<div class="bannerwrapper">
+									<div class="name card__line">Lubrizol Management</div>
+									<div class="title card__line">Market Development Manager</div>
+								</div>
+							</div>
+							<hr/>
 
-						<div class="period card__line">Oct 2003 - Apr 2006</div>
-						<div class="desc card__line">Promote functional additives of coating, ink & adhesive in north China.</div>
-						
+							<div class="period card__line">Feb 2015 - Feb 2018</div>
+							<div class="desc card__line">With excellent analysis skills, successfully identified and commercialized new business opportunity in automotive industry and furniture decorative industry. Outstanding Service Award in 2016.
+							</div>
+							
 				  </div></div></div>
 				  <div class="swiper-slide">
 					<div class="scard">
 						<div class="card show-scroll">
-							<img width="48" src="images/sinopec.jpg" height="48">
-						    <div class="bannerwrapper">
-						<div class="name card__line">Sinopec Yanshan</div>
-						<div class="title card__line">Research Specialist</div></div>
-						<hr/>
+							<div class="journey-header">
+								<img width="48" src="images/arkema.jpg" height="48" alt="Arkema Investment">
+								<div class="bannerwrapper">
+									<div class="name card__line">Arkema Investment</div>
+									<div class="title card__line">Sales Manager</div>
+								</div>
+							</div>
+							<hr/>
 
-						<div class="period card__line">Jul 2001 - Sep 2003</div>
-						<div class="desc card__line">Develop new rubber products, optimize formula and process. Familiar with high molecular lab instrument.</div>
-						
+							<div class="period card__line">Aug 2008 - Jan 2015</div>
+							<div class="desc card__line">Manage the glass coating business in China mainland. Organize and provide technical support to CVD project's installation and commissioning.Outstanding Service Award in 2012.</div>
+							
 				  </div></div></div>
 				  <div class="swiper-slide">
 					<div class="scard">
 						<div class="card show-scroll">
-							<img width="48" src="images/cqu.jpg" height="48">
-						    <div class="bannerwrapper">
-						<div class="name card__line">Chongqing University</div>
-						<div class="title card__line">Full time student</div></div>
-						<hr/>
+							<div class="journey-header">
+								<img width="48" src="images/connell.jpg" height="48" alt="Connell Bros. Co.">
+								<div class="bannerwrapper">
+									<div class="name card__line">Connell Bros. Co.</div>
+									<div class="title card__line">Sales Executive</div>
+								</div>
+							</div>
+							<hr/>
 
-						<div class="period card__line">Sep 1997 - Jul 2001</div>
-						<div class="desc card__line">Bachelor of Science in Chemistry</div>
-						
+							<div class="period card__line">May 2006 - Aug 2008</div>
+							<div class="desc card__line">Promote functional additives of coating, ink & adhesive in north China. Introduce high value added chemicals into market.</div>
+							
+				  </div></div></div>
+				  <div class="swiper-slide">
+					<div class="scard">
+						<div class="card show-scroll">
+							<div class="journey-header">
+								<img width="48" src="images/hersbit.jpg" height="48" alt="NCM Chemical Co.,Ltd">
+								<div class="bannerwrapper">
+									<div class="name card__line">NCM Chemical Co.,Ltd</div>
+									<div class="title card__line">Technical Sales Engineer</div>
+								</div>
+							</div>
+							<hr/>
+
+							<div class="period card__line">Oct 2003 - Apr 2006</div>
+							<div class="desc card__line">Promote functional additives of coating, ink & adhesive in north China.</div>
+							
+				  </div></div></div>
+				  <div class="swiper-slide">
+					<div class="scard">
+						<div class="card show-scroll">
+							<div class="journey-header">
+								<img width="48" src="images/sinopec.jpg" height="48" alt="Sinopec Yanshan">
+								<div class="bannerwrapper">
+									<div class="name card__line">Sinopec Yanshan</div>
+									<div class="title card__line">Research Specialist</div>
+								</div>
+							</div>
+							<hr/>
+
+							<div class="period card__line">Jul 2001 - Sep 2003</div>
+							<div class="desc card__line">Develop new rubber products, optimize formula and process. Familiar with high molecular lab instrument.</div>
+							
+				  </div></div></div>
+				  <div class="swiper-slide">
+					<div class="scard">
+						<div class="card show-scroll">
+							<div class="journey-header">
+								<img width="48" src="images/cqu.jpg" height="48" alt="Chongqing University">
+								<div class="bannerwrapper">
+									<div class="name card__line">Chongqing University</div>
+									<div class="title card__line">Full time student</div>
+								</div>
+							</div>
+							<hr/>
+
+							<div class="period card__line">Sep 1997 - Jul 2001</div>
+							<div class="desc card__line">Bachelor of Science in Chemistry</div>
+							
 				  </div></div></div>
 			</div>
 			<!-- If we need pagination -->
@@ -426,7 +465,7 @@
 						<div class="card show-scroll">
 						<div class="name card__line">Adding Redux with reduxjs/toolkit to a React App</div>
 						<hr/>
-						<div class="title card__line">#ReactJS #Redux</div>
+						<div class="desc card__line">#ReactJS #Redux</div>
 						<div class="thumbwrapper card__image"><a href="https://shawnwang-dev.medium.com/an-example-of-adding-redux-with-reduxjs-toolkit-to-an-react-app-b47d33b40e11" target="_blank"><img class="thumb" src="images/redux.jpg" /></a></div>
 						
 				  </div></div></div>
@@ -493,8 +532,8 @@
 			<!-- If we need pagination -->
 			<div class="swiper-pagination blogpagi"></div>
 			<!-- If we need navigation buttons -->
-			<div class="swiper-button-prev blogbtn"></div>
-			<div class="swiper-button-next blogbtn"></div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
 			</div>
 			<a class="ca3-scroll-down-link ca3-scroll-down-arrow bg-dark" data-ca3_iconfont="ETmodules" data-ca3_icon="" id="blogarrow"></a>
 			</div>
@@ -523,8 +562,8 @@
 							 
 							 <svg class="card__svg" viewBox="0 0 800 500">
 					   
-							   <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#434940"/>
-							   <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="green" stroke-width="3" fill="transparent"/>
+							   <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#1e293b"/>
+							   <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="#38bdf8" stroke-width="3" fill="transparent"/>
 							 </svg>
 						    <div class="card__cover"></div>
 							<div class="card__content">
@@ -545,8 +584,8 @@
 							 
 							 <svg class="card__svg" viewBox="0 0 800 500">
 					   
-							   <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#434940"/>
-							   <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="green" stroke-width="3" fill="transparent"/>
+							   <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#1e293b"/>
+							   <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="#38bdf8" stroke-width="3" fill="transparent"/>
 							 </svg>
 							 <div class="card__cover"></div>
 							<div class="card__content">
@@ -567,8 +606,8 @@
 							 
 							 <svg class="card__svg" viewBox="0 0 800 500">
 					   
-							   <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#434940"/>
-							   <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="green" stroke-width="3" fill="transparent"/>
+							   <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#1e293b"/>
+							   <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="#38bdf8" stroke-width="3" fill="transparent"/>
 							 </svg>
 							 <div class="card__cover"></div>
 							<div class="card__content">
@@ -589,8 +628,8 @@
 							 
 							 <svg class="card__svg" viewBox="0 0 800 500">
 					   
-							   <path class="card__curve" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#434940"/>
-							   <path class="card__line card__curve" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="green" stroke-width="3" fill="transparent"/>
+							   <path class="card__curve" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#1e293b"/>
+							   <path class="card__line card__curve" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="#38bdf8" stroke-width="3" fill="transparent"/>
 							 </svg>
 							 <div class="card__cover"></div>
 							<div class="card__content">
@@ -611,8 +650,8 @@
 							 
 							 <svg class="card__svg" viewBox="0 0 800 500">
 					   
-							   <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#434940"/>
-							   <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="green" stroke-width="3" fill="transparent"/>
+							   <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#1e293b"/>
+							   <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="#38bdf8" stroke-width="3" fill="transparent"/>
 							 </svg>
 							 <div class="card__cover"></div>
 							<div class="card__content">
@@ -632,8 +671,8 @@
 							 
 							 <svg class="card__svg" viewBox="0 0 800 500">
 					   
-							   <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#434940"/>
-							   <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="green" stroke-width="3" fill="transparent"/>
+							   <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#1e293b"/>
+							   <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="#38bdf8" stroke-width="3" fill="transparent"/>
 							 </svg>
 							 <div class="card__cover"></div>
 							<div class="card__content">
@@ -653,8 +692,8 @@
 							 
 							 <svg class="card__svg" viewBox="0 0 800 500">
 					   
-							   <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#434940"/>
-							   <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="green" stroke-width="3" fill="transparent"/>
+							   <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#1e293b"/>
+							   <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="#38bdf8" stroke-width="3" fill="transparent"/>
 							 </svg>
 							 <div class="card__cover"></div>
 							<div class="card__content">
@@ -671,8 +710,8 @@
 			<div class="swiper-pagination"></div>
 
 			<!-- If we need navigation buttons -->
-			<div class="swiper-button-prev"></div>
-			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev bg-dark-btn"></div>
+			<div class="swiper-button-next bg-dark-btn"></div>
 			</div>
 
 		</div>
@@ -709,6 +748,12 @@
 	<a href="#myjourney" class="nav-btn">My Journey</a>
 	<a href="#myblog" class="nav-btn">My Blog</a>
 	<a href="#aboutme" class="nav-btn">About Me</a>
+	<a href="javascript:void(0)" id="themeToggleBtn" class="theme-toggle-link" role="button" aria-label="Toggle theme">
+		<span class="theme-toggle-pill">
+			<i id="themeToggleIcon" class="fa-solid fa-moon"></i>
+			<span id="themeToggleText">Dark Theme</span>
+		</span>
+	</a>
 </nav>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
@@ -732,6 +777,8 @@
 	<script src="js/classie.js"></script>
     <script src="js/menu.js"></script>
 	<script src="js/timelin.js"></script>
+		<!-- Theme Switcher -->
+	<script src="js/theme.js"></script>
 	</body>
 </html>
 
