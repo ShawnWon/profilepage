@@ -50,6 +50,7 @@ hr {
 }
 
 #page .container100{
+  position: relative;
   height: 100vh;
   scroll-snap-align: start;
 
@@ -590,7 +591,7 @@ h1, h2, h3, h4, h5, h6, figure {
   background-color:rgb(44, 49, 38);
 }
 .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
-  bottom:-10px;
+  bottom: 0px;
 }
 /*mobile*/
 @media screen and (max-width: 768px) {
@@ -624,6 +625,12 @@ h1, h2, h3, h4, h5, h6, figure {
     margin-bottom: 30px;
     margin-top: 30px;
     line-height: 1;
+  }
+
+  .ca3-scroll-down-link {
+    height: 30px;
+    width: 40px;
+    bottom: 12px;
   }
 }
 /*about me*/
@@ -806,26 +813,30 @@ h1, h2, h3, h4, h5, h6, figure {
 
 /*Arrow down */
 .ca3-scroll-down-arrow {
-	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2hldnJvbl90aGluX2Rvd24iIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiBmaWxsPSJ3aGl0ZSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBhdGggZD0iTTE3LjQxOCw2LjEwOWMwLjI3Mi0wLjI2OCwwLjcwOS0wLjI2OCwwLjk3OSwwYzAuMjcsMC4yNjgsMC4yNzEsMC43MDEsMCwwLjk2OWwtNy45MDgsNy44M2MtMC4yNywwLjI2OC0wLjcwNywwLjI2OC0wLjk3OSwwbC03LjkwOC03LjgzYy0wLjI3LTAuMjY4LTAuMjctMC43MDEsMC0wLjk2OWMwLjI3MS0wLjI2OCwwLjcwOS0wLjI2OCwwLjk3OSwwTDEwLDEzLjI1TDE3LjQxOCw2LjEwOXoiLz48L3N2Zz4=);
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath d='M17.418,6.109c0.272-0.268,0.709-0.268,0.979,0c0.27,0.268,0.271,0.701,0,0.969l-7.908,7.83c-0.27,0.268-0.707,0.268-0.979,0l-7.908-7.83c-0.27-0.268-0.27-0.701,0-0.969c0.271-0.268,0.709-0.268,0.979,0L10,13.25L17.418,6.109z'/%3E%3C/svg%3E");
 	background-size: contain;
+	background-position: center;
 	background-repeat: no-repeat;
 }
 
+.ca3-scroll-down-arrow.bg-dark {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23434940'%3E%3Cpath d='M17.418,6.109c0.272-0.268,0.709-0.268,0.979,0c0.27,0.268,0.271,0.701,0,0.969l-7.908,7.83c-0.27,0.268-0.707,0.268-0.979,0l-7.908-7.83c-0.27-0.268-0.27-0.701,0-0.969c0.271-0.268,0.709-0.268,0.979,0L10,13.25L17.418,6.109z'/%3E%3C/svg%3E");
+	filter: none;
+}
+
 .ca3-scroll-down-link {
-  cursor:pointer;
-	height: 60px;
-	width: 80px;
-	margin: 0px 0 0 -40px;
-	line-height: 60px;
+	cursor: pointer;
+	height: 38px;
+	width: 50px;
+	line-height: 38px;
 	position: absolute;
 	left: 50%;
-	bottom: -100px;
-	color: #FFF;
-	text-align: center;
-	font-size: 70px;
+	bottom: 22px;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	margin: 0;
 	z-index: 100;
 	text-decoration: none;
-	text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
 
 	-webkit-animation: ca3_fade_move_down 2s ease-in-out infinite;
 	-moz-animation:    ca3_fade_move_down 2s ease-in-out infinite;
@@ -833,7 +844,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .bg-dark {
-  filter:invert(50%);
+  filter: none;
 }
 
 .bg-dark-btn {
@@ -846,20 +857,21 @@ h1, h2, h3, h4, h5, h6, figure {
 
 /*animated scroll arrow animation*/
 @-webkit-keyframes ca3_fade_move_down {
-  0%   { -webkit-transform:translate(0,-20px); opacity: 0;  }
-  50%  { opacity: 1;  }
-  100% { -webkit-transform:translate(0,20px); opacity: 0; }
+  0%   { -webkit-transform: translate(-50%, -8px); opacity: 0;  }
+  50%  { opacity: 0.9;  }
+  100% { -webkit-transform: translate(-50%, 8px); opacity: 0; }
 }
 @-moz-keyframes ca3_fade_move_down {
-  0%   { -moz-transform:translate(0,-20px); opacity: 0;  }
-  50%  { opacity: 1;  }
-  100% { -moz-transform:translate(0,20px); opacity: 0; }
+  0%   { -moz-transform: translate(-50%, -8px); opacity: 0;  }
+  50%  { opacity: 0.9;  }
+  100% { -moz-transform: translate(-50%, 8px); opacity: 0; }
 }
 @keyframes ca3_fade_move_down {
-  0%   { transform:translate(0,-20px); opacity: 0;  }
-  50%  { opacity: 1;  }
-  100% { transform:translate(0,20px); opacity: 0; }
+  0%   { transform: translate(-50%, -8px); opacity: 0;  }
+  50%  { opacity: 0.9;  }
+  100% { transform: translate(-50%, 8px); opacity: 0; }
 }
+
 
 /*anima card*/
 .animacard {

@@ -130,8 +130,11 @@
 
 
 	// Loading page
+	var loaderDismissed = false;
 	var loaderPage = function() {
-		$(".fh5co-loader").delay(2000).fadeOut(2000);
+		if (loaderDismissed) return;
+		loaderDismissed = true;
+		$(".fh5co-loader").delay(1000).fadeOut(1500);
 	};
 
 	//adjust img aspect ratio
@@ -158,19 +161,33 @@
 		skillsWayPoint();
 		adjustImgRatio();
 		$(document).ready(function(){
-			var imgs = document.images, len = imgs.length, counter =0;
-			[].forEach.call(imgs, function(img){
-				if(img.complete) incrementCounter();
-				else
-					img.addEventListener('load', incrementCounter, false);
-			});
-	
+			var imgs = document.images, len = imgs.length, counter = 0;
+			var fallbackTimer = setTimeout(function(){
+				loaderPage();
+			}, 2500);
+
+			if (len === 0) {
+				clearTimeout(fallbackTimer);
+				loaderPage();
+				return;
+			}
+
 			function incrementCounter(){
 				counter++;
-				if(counter===len){
+				if(counter >= len){
+					clearTimeout(fallbackTimer);
 					loaderPage();
 				}
 			}
+
+			[].forEach.call(imgs, function(img){
+				if(img.complete) {
+					incrementCounter();
+				} else {
+					img.addEventListener('load', incrementCounter, false);
+					img.addEventListener('error', incrementCounter, false);
+				}
+			});
 		});
 
 	});
@@ -222,45 +239,27 @@ $(document).ready(function () {
 	
   wordflick();
 
-  $("#headerarrow").on('click',function(event) {
-	event.preventDefault();
-	event.stopImmediatePropagation();
-	const el = document.getElementById('page');
-	el.scrollBy({
-		top:1,
-		behavior:'smooth'
-	});
+  var scrollTargets = {
+    '#headerarrow': '#portfolio',
+    '#portfolioarrow': '#myjourney',
+    '#journeyarrow': '#myblog',
+    '#blogarrow': '#aboutme'
+
+  };
+
+  $.each(scrollTargets, function(arrowId, targetId) {
+    $(arrowId).on('click', function(event) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      var target = $(targetId);
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 800, 'easeInOutExpo');
+      }
+    });
+  });
 });
 
-$("#portfolioarrow").on('click',function(event) {
-	event.preventDefault();
-	event.stopImmediatePropagation();
-	const el = document.getElementById('page');
-	el.scrollBy({
-		top:2,
-		behavior:'smooth'
-	});
-});
-$("#journeyarrow").on('click',function(event) {
-	event.preventDefault();
-	event.stopImmediatePropagation();
-	const el = document.getElementById('page');
-	el.scrollBy({
-		top:3,
-		behavior:'smooth'
-	});
-});
-$("#blogarrow").on('click',function(event) {
-	event.preventDefault();
-	event.stopImmediatePropagation();
-	const el = document.getElementById('page');
-	el.scrollBy({
-		top:4,
-		behavior:'smooth'
-	});
-});
-
-});
 
 }());
-
