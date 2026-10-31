@@ -231,20 +231,54 @@ var wordflick = function () {
         offset--;
       }
     }
-    $('.word').text('A ' +part);
+    var firstLetter = (part.charAt(0) || '').toLowerCase();
+    var article = (firstLetter === 'a' || firstLetter === 'e' || firstLetter === 'i' || firstLetter === 'o' || firstLetter === 'u') ? 'An ' : 'A ';
+    $('.word').text(article + part);
   },speed);
+};
+
+// Scroll Progress Bar Tracker
+var initScrollProgressBar = function() {
+  var $bar = $('#scroll-progress-bar');
+  if (!$bar.length) {
+    $('body').prepend('<div id="scroll-progress-bar"></div>');
+    $bar = $('#scroll-progress-bar');
+  }
+
+  var $page = $('#page');
+
+  function updateProgress() {
+    var winScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var docHeight = (document.documentElement.scrollHeight || document.body.scrollHeight || 0) - window.innerHeight;
+
+    // Check if #page is an internal scroll container
+    var pageElem = $page[0];
+    if (pageElem && pageElem.scrollHeight > pageElem.clientHeight && pageElem.scrollTop > 0) {
+      winScroll = pageElem.scrollTop;
+      docHeight = pageElem.scrollHeight - pageElem.clientHeight;
+    }
+
+    var progress = docHeight > 0 ? (winScroll / docHeight) * 100 : 0;
+    progress = Math.min(100, Math.max(0, progress));
+    $bar.css('width', progress + '%');
+  }
+
+  $(window).on('scroll resize', updateProgress);
+  $page.on('scroll', updateProgress);
+  updateProgress();
 };
 
 $(document).ready(function () {
 	
   wordflick();
+  initScrollProgressBar();
 
   var scrollTargets = {
     '#headerarrow': '#portfolio',
     '#portfolioarrow': '#myjourney',
     '#journeyarrow': '#myblog',
-    '#blogarrow': '#aboutme'
-
+    '#blogarrow': '#aboutme',
+    '#aboutarrow': '#contact'
   };
 
   $.each(scrollTargets, function(arrowId, targetId) {

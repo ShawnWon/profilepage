@@ -13,7 +13,8 @@
 html {
   height: 100%;
   overflow: hidden;
-  scroll-behavior:smooth;
+  scroll-behavior: smooth;
+  background: #0a0d14;
 }
 body {
   font-family: "Space Mono", Arial, serif;
@@ -45,8 +46,14 @@ hr {
   transition: 0.5s;*/
   scroll-snap-type: y mandatory;
   /*overflow-y: scroll;*/
-  margin: 0 auto;
-  max-width:1440px;
+  margin: 0;
+  max-width: 100%;
+}
+
+.persContainer,
+.wrapper {
+  background: #0a0d14;
+  width: 100%;
 }
 
 #page .container100{
@@ -136,7 +143,35 @@ h1, h2, h3, h4, h5, h6, figure {
   position: relative;
   height: 600px;
   width: 100%;
+  overflow: hidden;
 }
+#fh5co-header::before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, rgba(14, 165, 233, 0.08) 50%, transparent 75%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 1;
+  animation: heroGlowPulse 7s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlowPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+}
+
 #fh5co-header .overlay,
 .fh5co-cover .overlay {
   position: absolute;
@@ -165,6 +200,24 @@ h1, h2, h3, h4, h5, h6, figure {
   padding: 0;
   color: #38bdf8;
 }
+#scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #38bdf8 0%, #60a5fa 50%, #38bdf8 100%);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.8), 0 0 5px rgba(56, 189, 248, 0.5);
+  z-index: 9999;
+  pointer-events: none;
+  transition: width 0.15s ease-out;
+}
+
+body.theme-classic #scroll-progress-bar {
+  background: linear-gradient(90deg, #87da28 0%, #a5ef7d 50%, #87da28 100%) !important;
+  box-shadow: 0 0 10px rgba(165, 239, 125, 0.8), 0 0 5px rgba(165, 239, 125, 0.5) !important;
+}
+
 #fh5co-header .display-tc h1,
 .fh5co-cover .display-tc h1 {
   font-family: "Kaushan Script", cursive;
@@ -177,6 +230,51 @@ h1, h2, h3, h4, h5, h6, figure {
   -ms-transform: rotate(-5deg);
   -o-transform: rotate(-5deg);
   transform: rotate(-5deg);
+  display: inline-block;
+  cursor: pointer;
+  perspective: 600px;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
+}
+
+#fh5co-header .display-tc h1:hover,
+.fh5co-cover .display-tc h1:hover {
+  transform: rotate(-2deg) scale(1.06) translateY(-4px);
+  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.5));
+}
+
+body.theme-classic #fh5co-header .display-tc h1:hover,
+body.theme-classic .fh5co-cover .display-tc h1:hover {
+  filter: drop-shadow(0 0 16px rgba(165, 239, 125, 0.55)) !important;
+}
+
+.word {
+  margin-top: 120px;
+  display: inline-block;
+  position: relative;
+}
+
+.word::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background-color: #38bdf8;
+  margin-left: 4px;
+  vertical-align: -0.15em;
+  animation: typingCursorBlink 0.8s infinite;
+}
+
+body.theme-classic .word::after {
+  background-color: rgb(165, 239, 125) !important;
+}
+
+@keyframes typingCursorBlink {
+  0%, 45% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
 }
 #fh5co-header .display-tc h1 span,
 .fh5co-cover .display-tc h1 span {
@@ -501,7 +599,17 @@ h1, h2, h3, h4, h5, h6, figure {
   margin-top: 30px;
   line-height: 1.5;
   color: #38bdf8;
-  font-family:"Kaushan Script", cursive;
+  font-family: "Kaushan Script", cursive;
+  background: linear-gradient(120deg, #38bdf8 0%, #bae6fd 50%, #38bdf8 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.6s ease;
+  display: inline-block;
+}
+
+.fh5co-heading:hover h2 {
+  background-position: right center;
 }
 .fh5co-heading p {
   font-size: 18px;
@@ -888,6 +996,22 @@ h1, h2, h3, h4, h5, h6, figure {
 .scard .card.scroll-visible {
   opacity: 1;
   transform: translateX(0);
+}
+
+.scard .card.scroll-visible:hover {
+  transform: translateY(-7px) scale(1.015);
+  box-shadow: 0 22px 35px -8px rgba(0, 0, 0, 0.65), 0 0 24px rgba(56, 189, 248, 0.3);
+  border-color: rgba(56, 189, 248, 0.55);
+}
+
+.animacard {
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.animacard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 35px -8px rgba(0, 0, 0, 0.65), 0 0 22px rgba(56, 189, 248, 0.25);
+  border-color: rgba(56, 189, 248, 0.45);
 }
 
 /* Journey Card Header with Logo Image */
@@ -1508,18 +1632,94 @@ h1, h2, h3, h4, h5, h6, figure {
 
 @media screen and (min-width: 1600px) {
   .swiper-wrapper {
-    top:30%;
+    top: 5%;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .swiper-wrapper {
-    top:20%;
+    top: 5%;
   }
 }
 @media screen and (min-width: 1024px) {
   .swiper-wrapper {
-    top:10%;
+    top: 5%;
+  }
+}
+
+/* =======================================================
+*  RESPONSIVE DESKTOP ENHANCEMENTS (>= 992px & >= 1200px)
+* ======================================================= */
+@media screen and (min-width: 992px) {
+  /* 1. Hero Avatar Natural Vertical Centering */
+  #fh5co-header .display-tc .profile-thumb,
+  .fh5co-cover .display-tc .profile-thumb {
+    margin-top: 40px !important;
+    margin-bottom: 24px;
+    height: 250px;
+    width: 250px;
+  }
+
+  /* 2. Ideal Card Width for 3D Coverflow Peek Cards */
+  .swiper-slide {
+    width: 400px !important;
+    max-width: 440px !important;
+  }
+
+  .scard .card {
+    min-height: 480px;
+    max-height: 540px;
+    padding: 22px 20px;
+  }
+
+  /* 3. Balanced Typography for Larger Displays */
+  .journey-header .bannerwrapper .name,
+  .scard .card .name {
+    font-size: 15px;
+  }
+  .journey-header .bannerwrapper .title,
+  .scard .card .title {
+    font-size: 13px;
+  }
+  .scard .card .desc,
+  .swiperportfolio .scard .card .desc,
+  .swipermyblog .scard .card .desc {
+    font-size: 13px;
+    line-height: 1.65;
+    padding: 0 8px;
+  }
+  .scard .card .period {
+    font-size: 12px;
+  }
+
+  /* 4. Animacard dimensions on desktop */
+  .animacard {
+    width: 380px;
+    max-height: 540px;
+  }
+
+  /* 5. Gutter-positioned Navigation Arrows */
+  .swiper-button-prev {
+    left: calc(50% - 280px);
+  }
+  .swiper-button-next {
+    right: calc(50% - 280px);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .swiper-slide {
+    width: 430px !important;
+    max-width: 460px !important;
+  }
+  .animacard {
+    width: 400px;
+  }
+  .swiper-button-prev {
+    left: calc(50% - 310px);
+  }
+  .swiper-button-next {
+    right: calc(50% - 310px);
   }
 }
 
@@ -1531,6 +1731,15 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-started {
   background: #070a0f !important;
   position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important;
+}
+#fh5co-started .container {
+  position: relative;
+  z-index: 2;
 }
 #fh5co-started .overlay {
   background: rgba(7, 10, 15, 0.9);
@@ -1612,6 +1821,7 @@ body,
 .card__cover,
 .perspective,
 .persContainer,
+.wrapper,
 .effect-rotateleft {
     transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
 }
@@ -1677,6 +1887,15 @@ body,
 body.theme-classic {
     background: rgb(185, 228, 169) !important;
     color: #4d4d4d !important;
+}
+
+html.theme-classic {
+    background: rgb(185, 228, 169) !important;
+}
+
+body.theme-classic .persContainer,
+body.theme-classic .wrapper {
+    background: rgb(185, 228, 169) !important;
 }
 
 body.theme-classic p {
@@ -1790,8 +2009,29 @@ body.theme-classic #fh5co-started .overlay {
     background: rgba(104, 112, 95, 0.9) !important;
 }
 
+/* Classic Hero Ambient Glow */
+body.theme-classic #fh5co-header::before {
+    display: block !important;
+    background: radial-gradient(circle, rgba(165, 239, 125, 0.28) 0%, rgba(104, 112, 95, 0.12) 50%, transparent 75%) !important;
+    filter: blur(55px) !important;
+    animation: heroGlowPulseClassic 7s ease-in-out infinite alternate !important;
+}
+
+@keyframes heroGlowPulseClassic {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.95;
+  }
+}
+
 body.theme-classic .fh5co-heading h2 {
     color: rgba(104, 112, 95) !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
 }
 
 body.theme-classic .fh5co-bg-dark .fh5co-heading h2,
@@ -1830,8 +2070,24 @@ body.theme-classic .swiper-slide {
 
 body.theme-classic .scard .card {
     background-color: white !important;
-    border: 1px solid rgba(104, 112, 95, 0.9) !important;
-    box-shadow: none !important;
+    border: 1px solid rgba(104, 112, 95, 0.45) !important;
+    box-shadow: 0 4px 14px rgba(104, 112, 95, 0.1) !important;
+}
+
+body.theme-classic .scard .card.scroll-visible:hover {
+    transform: translateY(-7px) scale(1.015) !important;
+    box-shadow: 0 18px 30px -6px rgba(104, 112, 95, 0.25), 0 0 20px rgba(165, 239, 125, 0.45) !important;
+    border-color: rgba(104, 112, 95, 0.8) !important;
+}
+
+body.theme-classic .animacard {
+    box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.2), 0 0 1rem rgba(0, 0, 0, 0.2) !important;
+}
+
+body.theme-classic .animacard:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 16px 28px -6px rgba(0, 0, 0, 0.35), 0 0 22px rgba(165, 239, 125, 0.35) !important;
+    border-color: rgba(165, 239, 125, 0.5) !important;
 }
 
 /* Original classic font color for card__line and card text is #4d4d4d */

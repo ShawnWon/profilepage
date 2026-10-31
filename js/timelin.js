@@ -3,6 +3,11 @@ var swiperjourney = new Swiper(".swiperjourney", {
   grabCursor: true,
   centeredSlides: true,
   slidesPerView: "auto",
+  autoplay: {
+    delay: 3500,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  },
   coverflowEffect: {
     rotate: 50,
     stretch: 0,
@@ -25,6 +30,11 @@ var swiperportfolio = new Swiper(".swiperportfolio", {
   grabCursor: true,
   centeredSlides: true,
   slidesPerView: "auto",
+  autoplay: {
+    delay: 4000,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  },
   coverflowEffect: {
     rotate: 50,
     stretch: 0,
@@ -47,6 +57,11 @@ var swiper = new Swiper(".swipermyblog", {
   grabCursor: true,
   centeredSlides: true,
   slidesPerView: "auto",
+  autoplay: {
+    delay: 4200,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  },
   coverflowEffect: {
     rotate: 50,
     stretch: 0,
@@ -69,6 +84,11 @@ var swiper = new Swiper(".swiperaboutme", {
   grabCursor: true,
   centeredSlides: true,
   slidesPerView: "auto",
+  autoplay: {
+    delay: 4500,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  },
   coverflowEffect: {
     rotate: 50,
     stretch: 0,
