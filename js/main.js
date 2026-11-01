@@ -268,10 +268,167 @@ var initScrollProgressBar = function() {
   updateProgress();
 };
 
+// Interactive Hero Parallax on Mouse Move
+var initHeroParallax = function() {
+  var $hero = $('#fh5co-header');
+  var $parallaxLayer = $hero.find('.hero-content-parallax');
+
+  if (!$hero.length || !window.matchMedia('(pointer: fine)').matches) return;
+
+  var currentX = 0, currentY = 0;
+  var targetX = 0, targetY = 0;
+
+  $hero.on('mouseleave', function() {
+    targetX = 0;
+    targetY = 0;
+  });
+
+  $hero.on('mousemove', function(e) {
+    var rect = this.getBoundingClientRect();
+    var relX = (e.clientX - rect.left) - rect.width / 2;
+    var relY = (e.clientY - rect.top) - rect.height / 2;
+    targetX = relX / (rect.width / 2); // -1 to 1
+    targetY = relY / (rect.height / 2);
+  });
+
+  function renderParallax() {
+    currentX += (targetX - currentX) * 0.08;
+    currentY += (targetY - currentY) * 0.08;
+
+    if ($parallaxLayer.length) {
+      $parallaxLayer.css('transform', 'translate3d(' + (currentX * 12) + 'px, ' + (currentY * 8) + 'px, 0)');
+    }
+
+    requestAnimationFrame(renderParallax);
+  }
+
+  requestAnimationFrame(renderParallax);
+};
+
+// Terminal Boot Sequence for Contact Me
+var initContactTerminal = function () {
+  var $terminal = $('#contactTerminalBody');
+  var $btn = $('#contactBootBtn');
+  var $btnText = $('#contactBtnText');
+  if (!$terminal.length || !$btn.length) return;
+
+  var hasTriggered = false;
+
+  var scriptLines = [
+    { type: 'cmd', prompt: 'shawn@station:~$', text: 'systemctl boot contact-service.sh' },
+    { type: 'info', prefix: '[ OK ]', text: 'Initiating quantum handshake protocol...' },
+    { type: 'info', prefix: '[ OK ]', text: 'Secure communication channel established.' },
+    { type: 'info', prefix: '[READY]', text: 'Looking for visionary collaborators & new ventures.' },
+    { type: 'cmd', prompt: 'shawn@station:~$', text: './contact --execute' }
+  ];
+
+  function runBootSequence() {
+    $terminal.empty();
+    var currentLineIndex = 0;
+
+    function typeLine() {
+      if (currentLineIndex >= scriptLines.length) {
+        // All lines typed, trigger button transform
+        transformButton();
+        return;
+      }
+
+      var item = scriptLines[currentLineIndex];
+      var $line = $('<div class="terminal-line"></div>');
+      $terminal.append($line);
+
+      var $cursor = $('<span class="terminal-cursor"></span>');
+
+      if (item.type === 'cmd') {
+        var $prompt = $('<span class="t-prompt"></span>').text(item.prompt);
+        var $cmd = $('<span class="t-cmd"></span>');
+        $line.append($prompt).append($cmd).append($cursor);
+
+        var charIndex = 0;
+        var cmdInterval = setInterval(function () {
+          if (charIndex < item.text.length) {
+            $cmd.text($cmd.text() + item.text.charAt(charIndex));
+            charIndex++;
+          } else {
+            clearInterval(cmdInterval);
+            $cursor.remove();
+            currentLineIndex++;
+            setTimeout(typeLine, 350);
+          }
+        }, 32);
+      } else {
+        // System status line
+        var $prefix = $('<span class="t-success"></span>').text(item.prefix + ' ');
+        var $info = $('<span class="t-info"></span>');
+        $line.append($prefix).append($info).append($cursor);
+
+        var charIdx = 0;
+        var infoInterval = setInterval(function () {
+          if (charIdx < item.text.length) {
+            $info.text($info.text() + item.text.charAt(charIdx));
+            charIdx++;
+          } else {
+            clearInterval(infoInterval);
+            $cursor.remove();
+            currentLineIndex++;
+            setTimeout(typeLine, 220);
+          }
+        }, 18);
+      }
+    }
+
+    typeLine();
+  }
+
+  function transformButton() {
+    // Add blinking cursor to the final prompt in terminal
+    var $finalCursor = $('<span class="terminal-cursor"></span>');
+    $terminal.find('.terminal-line:last-child').append($finalCursor);
+
+    // Glitch / flip transform from ./contact to Let's talk
+    setTimeout(function () {
+      $btnText.addClass('text-glitch');
+      setTimeout(function () {
+        $btnText.text("Let's talk");
+        $btnText.removeClass('text-glitch');
+        $btn.removeClass('disabled').addClass('btn-ready');
+      }, 350);
+    }, 450);
+  }
+
+  // Trigger when scrolled into view
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && !hasTriggered) {
+          hasTriggered = true;
+          observer.disconnect();
+          setTimeout(runBootSequence, 300);
+        }
+      });
+    }, { threshold: 0.25 });
+
+    var targetSection = document.getElementById('fh5co-started');
+    if (targetSection) {
+      observer.observe(targetSection);
+    }
+  } else {
+    // Fallback: Waypoint or scroll
+    $('#fh5co-started').waypoint(function () {
+      if (!hasTriggered) {
+        hasTriggered = true;
+        setTimeout(runBootSequence, 300);
+      }
+    }, { offset: '75%' });
+  }
+};
+
 $(document).ready(function () {
 	
   wordflick();
   initScrollProgressBar();
+  initHeroParallax();
+  initContactTerminal();
 
   var scrollTargets = {
     '#headerarrow': '#portfolio',

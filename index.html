@@ -25,6 +25,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no"/>
 	<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 	
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
@@ -171,8 +172,10 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="display-t js-fullheight">
-						<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-							<div class="profile-thumb show-scroll" style="background: url(images/user-3.jpg);"></div>
+						<div class="display-tc js-fullheight animate-box hero-content-parallax" data-animate-effect="fadeIn">
+							<div class="profile-thumb-wrap">
+								<div class="profile-thumb show-scroll" style="background: url(images/user-3.jpg);"></div>
+							</div>
 							<h1><span>Shawn XZ Wang</span></h1>
 							<br>
 							<br/>
@@ -723,11 +726,28 @@
 	<div id="fh5co-started" class="fh5co-bg-dark container100">
 		<div class="overlay"></div>
 		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Here's to the crazy ones. </h2>
-					<p>The misfits. The rebels. The troublemakers. The round pegs in the square holes.</p>
-					<p><a href="mailto:shawn.won@hotmail.com" class="btn btn-default btn-lg">Contact Me</a></p>
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+					<div class="contact-terminal">
+						<div class="terminal-header">
+							<div class="terminal-dots">
+								<span class="dot dot-red"></span>
+								<span class="dot dot-yellow"></span>
+								<span class="dot dot-green"></span>
+							</div>
+							<div class="terminal-title">bash — shawn@station: ~/contact</div>
+							<div class="terminal-status"><span class="status-pulse"></span> ONLINE</div>
+						</div>
+						<div class="terminal-body" id="contactTerminalBody">
+							<!-- Typed out dynamically by terminal boot sequence -->
+						</div>
+						<div class="terminal-actions text-center">
+							<a href="mailto:shawn.won@hotmail.com" id="contactBootBtn" class="btn btn-default btn-lg terminal-btn disabled">
+								<span class="btn-prompt-prefix">&gt; </span>
+								<span class="btn-text-transform" id="contactBtnText">./contact</span>
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -751,10 +771,13 @@
 	<a href="#myblog" class="nav-btn">My Blog</a>
 	<a href="#aboutme" class="nav-btn">About Me</a>
 	<a href="#contact" class="nav-btn">Contact</a>
-	<a href="javascript:void(0)" id="themeToggleBtn" class="theme-toggle-link" role="button" aria-label="Toggle theme">
+	<a href="javascript:void(0)" id="themeToggleBtn" class="theme-toggle-link" role="button" aria-label="Toggle theme" title="Toggle theme">
 		<span class="theme-toggle-pill">
-			<i id="themeToggleIcon" class="fa-solid fa-moon"></i>
-			<span id="themeToggleText">Dark Theme</span>
+			<span class="theme-toggle-switch-track">
+				<span class="theme-toggle-switch-thumb">
+					<i id="themeToggleIcon" class="fa-solid fa-moon"></i>
+				</span>
+			</span>
 		</span>
 	</a>
 </nav>

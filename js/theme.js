@@ -15,14 +15,20 @@
 
         var icon = document.getElementById('themeToggleIcon');
         var text = document.getElementById('themeToggleText');
-        if (icon && text) {
+        var toggleBtn = document.getElementById('themeToggleBtn');
+        if (icon) {
             if (isClassic) {
                 icon.className = 'fa-solid fa-leaf';
-                text.textContent = 'Classic Theme';
             } else {
                 icon.className = 'fa-solid fa-moon';
-                text.textContent = 'Dark Theme';
             }
+        }
+        if (text) {
+            text.textContent = isClassic ? 'Classic Theme' : 'Dark Theme';
+        }
+        if (toggleBtn) {
+            toggleBtn.setAttribute('title', isClassic ? 'Switch to Dark Theme' : 'Switch to Classic Theme');
+            toggleBtn.setAttribute('aria-label', isClassic ? 'Switch to Dark Theme' : 'Switch to Classic Theme');
         }
     }
 
