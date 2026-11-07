@@ -200,7 +200,30 @@
     forwards = true,
     skip_count = 0,
     skip_delay = 15,
-    speed = 70;
+    speed = 70,
+    isCurrentLangZh = false;
+
+  // Function to dynamically update typewriter words when language is toggled
+  window.updateTypewriterLanguage = function (newWords, isZh) {
+    if (newWords && newWords.length) {
+      words = newWords;
+      len = newWords.length;
+      isCurrentLangZh = !!isZh;
+      i = 0;
+      offset = 0;
+      skip_count = 0;
+      forwards = true;
+    }
+  };
+
+  // Sync initial language if already loaded
+  if (window.getHeroTypewriterWords) {
+    var initialTypewriter = window.getHeroTypewriterWords();
+    words = initialTypewriter.words;
+    len = words.length;
+    isCurrentLangZh = initialTypewriter.isZh;
+  }
+
 var wordflick = function () {
   setInterval(function () {
     if (forwards) {
@@ -231,9 +254,13 @@ var wordflick = function () {
         offset--;
       }
     }
-    var firstLetter = (part.charAt(0) || '').toLowerCase();
-    var article = (firstLetter === 'a' || firstLetter === 'e' || firstLetter === 'i' || firstLetter === 'o' || firstLetter === 'u') ? 'An ' : 'A ';
-    $('.word').text(article + part);
+    if (isCurrentLangZh) {
+      $('.word').text(part);
+    } else {
+      var firstLetter = (part.charAt(0) || '').toLowerCase();
+      var article = (firstLetter === 'a' || firstLetter === 'e' || firstLetter === 'i' || firstLetter === 'o' || firstLetter === 'u') ? 'An ' : 'A ';
+      $('.word').text(article + part);
+    }
   },speed);
 };
 
@@ -314,15 +341,21 @@ var initContactTerminal = function () {
 
   var hasTriggered = false;
 
-  var scriptLines = [
-    { type: 'cmd', prompt: 'shawn@station:~$', text: 'systemctl boot contact-service.sh' },
-    { type: 'info', prefix: '[ OK ]', text: 'Initiating quantum handshake protocol...' },
-    { type: 'info', prefix: '[ OK ]', text: 'Secure communication channel established.' },
-    { type: 'info', prefix: '[READY]', text: 'Looking for visionary collaborators & new ventures.' },
-    { type: 'cmd', prompt: 'shawn@station:~$', text: './contact --execute' }
-  ];
+  function getActiveScriptLines() {
+    if (window.getTerminalScriptLines) {
+      return window.getTerminalScriptLines();
+    }
+    return [
+      { type: 'cmd', prompt: 'shawn@station:~$', text: 'systemctl boot contact-service.sh' },
+      { type: 'info', prefix: '[ OK ]', text: 'Initiating quantum handshake protocol...' },
+      { type: 'info', prefix: '[ OK ]', text: 'Secure communication channel established.' },
+      { type: 'info', prefix: '[READY]', text: 'Looking for visionary collaborators & new ventures.' },
+      { type: 'cmd', prompt: 'shawn@station:~$', text: './contact --execute' }
+    ];
+  }
 
   function runBootSequence() {
+    var scriptLines = getActiveScriptLines();
     $terminal.empty();
     var currentLineIndex = 0;
 
@@ -389,7 +422,8 @@ var initContactTerminal = function () {
     setTimeout(function () {
       $btnText.addClass('text-glitch');
       setTimeout(function () {
-        $btnText.text("Let's talk");
+        var isZh = (window.currentLanguage === 'zh');
+        $btnText.text(isZh ? "开始沟通" : "Let's talk");
         $btnText.removeClass('text-glitch');
         $btn.removeClass('disabled').addClass('btn-ready');
       }, 350);
