@@ -2143,8 +2143,9 @@ body,
 
 /* Menu Theme & Language Toggle Switch UI */
 .nav-toggles-row {
-    display: inline-flex;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 16px;
     margin-top: 24px;
 }
@@ -2891,10 +2892,10 @@ html[lang="zh-CN"] body {
 /* Hero Title - Calligraphic Literary Style */
 html[lang="zh-CN"] #fh5co-header .display-tc h1,
 html[lang="zh-CN"] .fh5co-cover .display-tc h1 {
-    font-family: "Ma Shan Zheng", "Noto Serif SC", "STKaiti", "KaiTi", "Songti SC", serif !important;
+    font-family: "Ma Shan Zheng", "Zhi Mang Xing", "Noto Serif SC", serif !important;
     font-weight: 400 !important;
     letter-spacing: normal !important;
-    font-size: 52px;
+    font-size: 54px;
     -webkit-transform: rotate(-3deg);
     -moz-transform: rotate(-3deg);
     -ms-transform: rotate(-3deg);
@@ -2963,16 +2964,23 @@ html[lang="zh-CN"] .fh5co-cover .display-tc h3 {
 
 /* Section Headings (Portfolio, Journey, Blog, About Me) */
 html[lang="zh-CN"] .fh5co-heading h2 {
-    font-family: "Noto Serif SC", "STSong", "Songti SC", "SimSun", serif !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.12em;
+    font-family: "Zhi Mang Xing", "Ma Shan Zheng", "ZCOOL XiaoWei", "Noto Serif SC", serif !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.18em;
+    font-size: 46px;
 }
 
 /* Navigation Menu Buttons */
 html[lang="zh-CN"] .outer-nav .nav-btn {
-    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif !important;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    font-family: "ZCOOL XiaoWei", "Noto Serif SC", "STKaiti", "KaiTi", serif !important;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    font-size: 1.05em;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
+}
+
+html[lang="zh-CN"] .outer-nav .nav-btn:hover {
+    letter-spacing: 0.22em;
 }
 
 /* Portfolio & Timeline Titles & Descriptions */

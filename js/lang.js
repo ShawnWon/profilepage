@@ -13,14 +13,14 @@
     // Nav Items
     'nav.home': { en: 'Home', zh: '主页' },
     'nav.portfolio': { en: 'Portfolio', zh: '作品集' },
-    'nav.journey': { en: 'My Journey', zh: '职业旅程' },
+    'nav.journey': { en: 'My Journey', zh: '职业生平' },
     'nav.blog': { en: 'My Blog', zh: '技术博客' },
     'nav.about': { en: 'About Me', zh: '关于我' },
     'nav.contact': { en: 'Contact', zh: '联系我' },
 
     // Section Headings
     'heading.portfolio': { en: 'Portfolio', zh: '作品集' },
-    'heading.journey': { en: 'My Journey', zh: '职业旅程' },
+    'heading.journey': { en: 'My Journey', zh: '职业生平' },
     'heading.blog': { en: 'Blogs on Medium', zh: '技术博客' },
     'heading.about': { en: 'About Me', zh: '关于我' },
 
@@ -55,6 +55,7 @@
     },
 
     // Journey Cards
+    'journey.j1.company': { en: 'Yale-NUS College', zh: '耶鲁-新加坡国大学院' },
     'journey.j1.title': { en: 'Software Developer', zh: '高级软件工程师' },
     'journey.j1.period': { en: 'Sep 2020 - Present', zh: '2020年9月 - 至今' },
     'journey.j1.desc': {
@@ -62,6 +63,7 @@
       zh: '作为核心主导开发工程师，运用 Ruby on Rails、Apache Solr、国际图像互操作框架 (IIIF) 以及 JavaScript 与 Python，全栈设计并落地 <a href="https://historicalmaps.yale-nus.edu.sg" target="_blank">Digital Historical Maps</a> 数字人文平台。'
     },
 
+    'journey.j2.company': { en: 'EON Reality', zh: '美国弈恩虚拟现实科技' },
     'journey.j2.title': { en: '.Net Developer Intern', zh: '.NET 开发实习工程师' },
     'journey.j2.period': { en: 'Mar 2020 - Jul 2020', zh: '2020年3月 - 2020年7月' },
     'journey.j2.desc': {
@@ -78,6 +80,7 @@
       zh: '系统分析专业研究生文凭。熟练掌握 C#、ASP MVC、Java、Python 及 Android 开发与测试，深入践行敏捷协作与 CI/CD 自动化构建，系统化设计落地的企业级 IT 解决方案。'
     },
 
+    'journey.j4.company': { en: 'Lubrizol Management', zh: '路博润管理（Lubrizol）' },
     'journey.j4.title': { en: 'Market Development Manager', zh: '市场业务拓展经理' },
     'journey.j4.period': { en: 'Feb 2015 - Feb 2018', zh: '2015年2月 - 2018年2月' },
     'journey.j4.desc': {
@@ -85,13 +88,15 @@
       zh: '凭借敏锐的数据洞察与商业分析能力，成功开拓汽车与家居装饰领域的关键新业务增长点，荣获 2016 年度卓越服务奖。'
     },
 
+    'journey.j5.company': { en: 'Arkema Investment', zh: '阿科玛投资（Arkema）' },
     'journey.j5.title': { en: 'Sales Manager', zh: '大区销售经理' },
     'journey.j5.period': { en: 'Aug 2008 - Jan 2015', zh: '2008年8月 - 2015年1月' },
     'journey.j5.desc': {
       en: "Manage the glass coating business in China mainland. Organize and provide technical support to CVD project's installation and commissioning.Outstanding Service Award in 2012.",
-      zh: '主管中国大陆区特种镀膜业务，统筹组织化学气相沉积 (CVD) 大型工程的安装实施与技术调试，荣获 2012 年度卓越服务奖。'
+      zh: '主管中国大陆区特种玻璃镀膜业务，统筹组织化学气相沉积 (CVD) 大型工程的安装实施与技术调试，荣获 2012 年度卓越服务奖。'
     },
 
+    'journey.j6.company': { en: 'Connell Bros. Co.', zh: '美国科耐欧贸易（Connell Bros.）' },
     'journey.j6.title': { en: 'Sales Executive', zh: '业务拓展主管' },
     'journey.j6.period': { en: 'May 2006 - Aug 2008', zh: '2006年5月 - 2008年8月' },
     'journey.j6.desc': {
@@ -99,6 +104,7 @@
       zh: '主导华北区涂料、油墨及胶粘剂功能性助剂的市场推广，将高附加值精细化工产品成功导入行业主流客户群。'
     },
 
+    'journey.j7.company': { en: 'NCM Chemical Co.,Ltd', zh: '和氏璧化工' },
     'journey.j7.title': { en: 'Technical Sales Engineer', zh: '技术销售工程师' },
     'journey.j7.period': { en: 'Oct 2003 - Apr 2006', zh: '2003年10月 - 2006年4月' },
     'journey.j7.desc': {
@@ -106,6 +112,7 @@
       zh: '负责华北地区工业功能性特种助剂的深度技术营销与客户解决方案定制。'
     },
 
+    'journey.j8.company': { en: 'Sinopec Yanshan', zh: '中国石化北京燕山' },
     'journey.j8.title': { en: 'Research Specialist', zh: '材料研发工程师' },
     'journey.j8.period': { en: 'Jul 2001 - Sep 2003', zh: '2001年7月 - 2003年9月' },
     'journey.j8.desc': {
@@ -113,6 +120,7 @@
       zh: '负责新型合成橡胶配方研发与工艺流程改良，精通高分子材料实验表征与性能测试。'
     },
 
+    'journey.j9.company': { en: 'Chongqing University', zh: '重庆大学' },
     'journey.j9.title': { en: 'Full time student', zh: '理学全日制本科' },
     'journey.j9.period': { en: 'Sep 1997 - Jul 2001', zh: '1997年9月 - 2001年7月' },
     'journey.j9.desc': {
@@ -146,7 +154,7 @@
     'about.c5.p2': { en: 'porque estoy loco.', zh: '雅汇帘杏溪桃之乡，' },
     'about.c5.p3': { en: '', zh: '何当醉飞吟盏之时，' },
     'about.c5.p4': { en: '', zh: '试问，孰与' },
-    'about.c5.p5': { en: '', zh: '执此狂狷朴愚之杯' },
+    'about.c5.p5': { en: '', zh: '执此‘狂狷朴愚’之杯' },
 
     'about.c6.title': { en: 'Sailor', zh: '水手' },
     'about.c6.p1': { en: 'Seeking gales as treasure,', zh: '脚下是比蓝天更清澈的碧波，' },
@@ -155,7 +163,7 @@
     'about.c6.p4': { en: '', zh: '仿佛在风暴中，' },
     'about.c6.p5': { en: '', zh: '才有着安详' },
 
-    'about.c7.title': { en: 'Bard', zh: '吟游诗人' },
+    'about.c7.title': { en: 'Bard', zh: '游吟诗人' },
     'about.c7.p1': { en: 'In cruel Age,', zh: '我用竖琴' },
     'about.c7.p2': { en: 'I sang of Liberty and Justice', zh: '为弱者吁求同情,' },
     'about.c7.p3': { en: 'in her blindness.', zh: '在残酷的年代，' },
