@@ -16,6 +16,7 @@
     'nav.journey': { en: 'My Journey', zh: '职业生平' },
     'nav.blog': { en: 'My Blog', zh: '技术博客' },
     'nav.about': { en: 'About Me', zh: '关于我' },
+    'nav.guestbook': { en: 'Guestbook', zh: '留言板' },
     'nav.contact': { en: 'Contact', zh: '联系我' },
 
     // Section Headings
@@ -23,6 +24,22 @@
     'heading.journey': { en: 'My Journey', zh: '职业生平' },
     'heading.blog': { en: 'Blogs on Medium', zh: '技术博客' },
     'heading.about': { en: 'About Me', zh: '关于我' },
+    'heading.guestbook': { en: 'Guestbook', zh: '留言板' },
+
+    // Guestbook UI
+    'guestbook.subtitle': {
+      en: 'Leave an anonymous thought, a digital footprint, or reply to fellow wanderers.',
+      zh: '雁过留痕，风过留声。欢迎留下匿名寄语，或与同行的旅者隔空对话。'
+    },
+    'guestbook.btn_post': { en: 'Post Message', zh: '发送留言' },
+    'guestbook.stream_title': { en: 'Public Echoes', zh: '公共留言流' },
+    'guestbook.nick_ph': { en: 'Anonymous Wanderer (Nickname)', zh: '匿名水手 (可自定义昵称)' },
+    'guestbook.msg_ph': { en: 'Write a public message...', zh: '写下一句留言吧...' },
+    'guestbook.open_drawer': { en: 'Open Drawer View (Option 3)', zh: '打开抽屉视图 (Option 3)' },
+    'guestbook.drawer_title': { en: 'Guestbook · All Messages', zh: '留言板 · 完整列表' },
+    'guestbook.compose_title': { en: 'Leave a Message', zh: '留下你的印记' },
+    'guestbook.pill_label': { en: 'Guestbook', zh: '留言板' },
+    'guestbook.teaser_text': { en: 'Say hi! Leave a message 💬', zh: '留个言呗 💬' },
 
     // Hero Subtitle static text if needed
     'hero.static_role': { en: 'Software Developer / System Analyst', zh: '软件工程师 / 系统分析师' },
@@ -236,6 +253,20 @@
           el.textContent = translation;
         }
       }
+    }
+
+    // Apply translations for placeholders with data-i18n-ph
+    var phElements = document.querySelectorAll('[data-i18n-ph]');
+    for (var j = 0; j < phElements.length; j++) {
+      var pEl = phElements[j];
+      var phKey = pEl.getAttribute('data-i18n-ph');
+      if (i18nData[phKey]) {
+        pEl.placeholder = isZh ? i18nData[phKey].zh : i18nData[phKey].en;
+      }
+    }
+
+    if (window.updateGuestbookLanguage) {
+      window.updateGuestbookLanguage();
     }
 
     // Update contact button text if not yet transformed or if ready

@@ -166,7 +166,13 @@
 	<header id="fh5co-header" class="fh5co-cover js-fullheight container100" role="banner" style="background-image:url(images/cover_bg_3.jpg);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<!--button id="showMenu">Show Menu</button-->
-		<span id="showMenu"><i class="fa-regular fa-compass"></i></span>
+		<div class="fixed-nav-actions">
+			<span id="showMenu" title="Menu"><i class="fa-regular fa-compass"></i></span>
+			<a href="javascript:void(0)" id="gbFloatingBtn" class="gb-floating-trigger" role="button" aria-label="Open Guestbook" title="留言板 (Guestbook)">
+				<i class="fa-regular fa-comments"></i>
+				<span class="gb-floating-badge" id="gbFloatingCountBadge" style="display: none;">0</span>
+			</a>
+		</div>
 
 		<div class="container100">
 			<div class="row">
@@ -729,7 +735,57 @@
 		<a class="ca3-scroll-down-link ca3-scroll-down-arrow bg-dark" data-ca3_iconfont="ETmodules" data-ca3_icon="" id="aboutarrow"></a>
 	</div>
 	<!-- About me end-->
-	
+
+	<!-- Fullscreen Drawer / Modal View -->
+	<div id="gbDrawerModal" class="gb-drawer-modal" aria-hidden="true">
+		<div class="gb-drawer-backdrop" id="gbDrawerBackdrop"></div>
+		<div class="gb-drawer-content">
+			<div class="gb-drawer-header">
+				<div class="gb-drawer-title">
+					<i class="fa-regular fa-comments"></i> <span data-i18n="guestbook.drawer_title">留言板 · 完整列表</span>
+					<span class="gb-drawer-badge" id="gbDrawerCountBadge">0</span>
+				</div>
+				<button type="button" class="gb-drawer-close" id="gbDrawerCloseBtn" aria-label="Close">
+					<i class="fa-solid fa-xmark"></i>
+				</button>
+			</div>
+
+			<div class="gb-drawer-body">
+				<!-- Drawer Quick Post Box -->
+				<div class="gb-drawer-compose">
+					<form id="gbDrawerForm" class="gb-drawer-form">
+						<div class="gb-user-row">
+							<div class="gb-avatar-picker">
+								<img id="gbDrawerAvatarPreview" class="gb-avatar" src="https://api.dicebear.com/7.x/bottts/svg?seed=wanderer" alt="Avatar" />
+								<button type="button" id="gbDrawerDiceBtn" class="gb-dice-btn" title="随机生成昵称与头像">
+									<i class="fa-solid fa-dice"></i>
+								</button>
+							</div>
+							<div class="gb-input-wrap">
+								<input type="text" id="gbDrawerNicknameInput" class="gb-input" placeholder="匿名水手 (Nickname)" maxlength="30" data-i18n-ph="guestbook.nick_ph" />
+							</div>
+						</div>
+						<div class="gb-textarea-wrap">
+							<textarea id="gbDrawerContentInput" class="gb-textarea" rows="2" placeholder="写下一句留言吧... (Write a public message...)" maxlength="1000" required data-i18n-ph="guestbook.msg_ph"></textarea>
+						</div>
+						<div class="gb-form-footer">
+							<span id="gbDrawerStatusFeedback" class="gb-status-feedback"></span>
+							<button type="submit" class="gb-submit-btn">
+								<i class="fa-solid fa-paper-plane"></i> <span data-i18n="guestbook.btn_post">发送留言</span>
+							</button>
+						</div>
+					</form>
+				</div>
+
+				<!-- Drawer Vertical Message Stream -->
+				<div class="gb-drawer-stream" id="gbDrawerStreamList">
+					<!-- Populated by guestbook.js -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Fullscreen Drawer end -->
+
 	<a id="contact"></a>
 	<div id="fh5co-started" class="fh5co-bg-dark container100">
 		<div class="overlay"></div>
@@ -826,6 +882,11 @@
 	<script src="js/theme.js"></script>
 	<!-- Language Switcher -->
 	<script src="js/lang.js"></script>
+	<!-- Supabase JS Client CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+	<!-- Guestbook Scripts -->
+	<script src="js/guestbook-config.js"></script>
+	<script src="js/guestbook.js"></script>
 	</body>
 </html>
 
