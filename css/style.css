@@ -3421,6 +3421,98 @@ html[lang="zh-CN"] .terminal-window {
     -webkit-tap-highlight-color: transparent;
 }
 
+.gb-translate-btn {
+    background: none;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    color: #7dd3fc;
+    font-size: 11.5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s ease;
+    padding: 3px 8px;
+    border-radius: 6px;
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.gb-translate-btn:hover {
+    color: #38bdf8;
+    border-color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    transform: translateY(-1px);
+}
+
+.gb-translate-btn:active,
+.gb-translate-btn:focus {
+    color: #ffffff !important;
+    background: rgba(56, 189, 248, 0.2) !important;
+    outline: none !important;
+}
+
+.gb-translate-btn-sm {
+    font-size: 10.5px;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* AI Translation Box inside message */
+.gb-translation-box {
+    margin-top: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: rgba(56, 189, 248, 0.07);
+    border: 1px dashed rgba(56, 189, 248, 0.35);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.gb-trans-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.gb-trans-header i {
+    font-size: 11px;
+}
+
+.gb-trans-content {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #e2e8f0;
+    font-style: italic;
+}
+
+.gb-trans-loading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #7dd3fc;
+    padding: 4px 0;
+}
+
+.gb-trans-error {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    color: #f87171;
+}
+
+.gb-reply-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 6px;
+}
+
 .gb-reply-btn:hover {
     color: #38bdf8;
     transform: translateX(2px);
@@ -3741,6 +3833,40 @@ body.theme-classic .gb-status-feedback {
 }
 
 body.theme-classic .gb-reply-btn:hover {
+    color: rgb(165, 239, 125) !important;
+}
+
+body.theme-classic .gb-translate-btn {
+    border-color: rgba(165, 239, 125, 0.25) !important;
+    color: rgb(165, 239, 125) !important;
+}
+
+body.theme-classic .gb-translate-btn:hover {
+    color: #ffffff !important;
+    border-color: rgb(165, 239, 125) !important;
+    background: rgba(165, 239, 125, 0.15) !important;
+}
+
+body.theme-classic .gb-translate-btn:active,
+body.theme-classic .gb-translate-btn:focus {
+    background: rgba(165, 239, 125, 0.25) !important;
+    outline: none !important;
+}
+
+body.theme-classic .gb-translation-box {
+    background: rgba(165, 239, 125, 0.08) !important;
+    border-color: rgba(165, 239, 125, 0.35) !important;
+}
+
+body.theme-classic .gb-trans-header {
+    color: rgb(165, 239, 125) !important;
+}
+
+body.theme-classic .gb-trans-content {
+    color: #f0fdf4 !important;
+}
+
+body.theme-classic .gb-trans-loading {
     color: rgb(165, 239, 125) !important;
 }
 

@@ -5,6 +5,7 @@
   var TABLE_NAME = 'guestbook';
   var supabaseClient = null;
   var cachedMessages = [];
+  var translationCache = {}; // Cache translated texts: msgId -> translatedText
 
   var LOCAL_STORAGE_KEY = 'shawn_guestbook_demo_cache';
 
@@ -113,6 +114,96 @@
     return 'https://api.dicebear.com/7.x/bottts/svg?seed=' + encodeURIComponent(seed || 'wanderer');
   }
 
+  // Detect whether text is primarily Chinese
+  function isChineseText(text) {
+    var cnChars = (text || '').match(/[\u4e00-\u9fa5]/g) || [];
+    return cnChars.length >= 2 || (cnChars.length > 0 && cnChars.length / (text.length || 1) > 0.15);
+  }
+
+  // Call Supabase Edge Function or Google Gemini API (or Free Fallback) to translate text
+  async function translateWithGemini(text, targetLang) {
+    var transConfig = window.TRANSLATION_CONFIG || {};
+    var geminiConfig = transConfig.gemini || window.GEMINI_CONFIG || {};
+    var targetLangName = targetLang === 'zh-CN' ? 'Simplified Chinese (简体中文)' : 'English';
+
+    // 1. Try Supabase Edge Function first if enabled and Supabase is connected
+    if (transConfig.useEdgeFunction && supabaseClient && supabaseClient.functions) {
+      try {
+        var functionName = transConfig.edgeFunctionName || 'translate';
+        var { data, error } = await supabaseClient.functions.invoke(functionName, {
+          body: {
+            text: text,
+            targetLang: targetLang,
+            targetLangName: targetLangName
+          }
+        });
+
+        if (error) {
+          console.warn('Supabase Edge Function translation error, falling back:', error);
+          if (error.context && typeof error.context.json === 'function') {
+            error.context.json().then(function(detail) {
+              console.error('Supabase Edge Function error details from server:', detail);
+            }).catch(function(){});
+          }
+        } else if (data && (data.translatedText || data.translation || data.text)) {
+          return (data.translatedText || data.translation || data.text).trim();
+        }
+      } catch (fnErr) {
+        console.warn('Supabase Edge Function call failed:', fnErr);
+      }
+    }
+
+    // 2. Direct Gemini API call if key is provided
+    var apiKey = geminiConfig.apiKey;
+    var model = geminiConfig.model || 'gemini-1.5-flash';
+
+    if (apiKey && apiKey !== 'YOUR_GEMINI_API_KEY') {
+      var endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent?key=' + apiKey;
+      var prompt = 'You are a translation engine for a personal portfolio guestbook. Translate the following message into ' + targetLangName + '. Only output the direct, natural translation without explanations, conversational fillers, or quotes.\n\nMessage to translate:\n' + text;
+
+      var response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{ text: prompt }]
+          }],
+          generationConfig: {
+            temperature: 0.2,
+            maxOutputTokens: 1000
+          }
+        })
+      });
+
+      if (!response.ok) {
+        var errData = await response.json().catch(function () { return {}; });
+        throw new Error(errData.error && errData.error.message ? errData.error.message : 'Gemini API Error ' + response.status);
+      }
+
+      var result = await response.json();
+      var outputText = result.candidates && result.candidates[0] && result.candidates[0].content && result.candidates[0].content.parts && result.candidates[0].content.parts[0] && result.candidates[0].content.parts[0].text;
+
+      if (!outputText) throw new Error('Empty response from Gemini');
+      return outputText.trim();
+    }
+
+    // 3. Client-side free fallback endpoint (ensures it works out of the box)
+    try {
+      var tl = targetLang === 'zh-CN' ? 'zh-CN' : 'en';
+      var fallbackUrl = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=' + tl + '&dt=t&q=' + encodeURIComponent(text);
+      var resp = await fetch(fallbackUrl);
+      var fbData = await resp.json();
+      if (fbData && fbData[0]) {
+        var translated = fbData[0].map(function (item) { return item[0]; }).join('');
+        return translated;
+      }
+    } catch (fbErr) {
+      console.warn('Fallback translate failed:', fbErr);
+    }
+
+    throw new Error('TRANSLATION_FAILED');
+  }
+
   async function fetchMessages() {
     if (supabaseClient) {
       try {
@@ -188,6 +279,10 @@
       var timeStr = formatTime(root.created_at);
       var avatar = getAvatarUrl(root.avatar_seed || root.nickname);
 
+      var isRootChinese = isChineseText(root.content);
+      var defaultTargetLang = isZh ? (isRootChinese ? 'en' : 'zh-CN') : (isRootChinese ? 'en' : 'zh-CN');
+      var translateBtnLabel = isZh ? (isRootChinese ? '翻译为英文' : '翻译为中文') : (isRootChinese ? 'Translate to EN' : 'Translate to ZH');
+
       html +=
         '<div class="gb-drawer-card-thread" id="drawer-msg-' + root.id + '">' +
           '<div class="gb-card">' +
@@ -198,11 +293,15 @@
                   '<span class="gb-author">' + escapeHTML(root.nickname) + '</span>' +
                   '<span class="gb-time">' + timeStr + '</span>' +
                 '</div>' +
-                '<div class="gb-text">' + escapeHTML(root.content) + '</div>' +
+                '<div class="gb-text" id="gb-text-' + root.id + '">' + escapeHTML(root.content) + '</div>' +
+                '<div class="gb-translation-box" id="gb-trans-' + root.id + '" style="display: none;"></div>' +
               '</div>' +
             '</div>' +
             '<div class="gb-card-footer">' +
               '<div class="gb-actions">' +
+                '<button type="button" class="gb-translate-btn" data-msg-id="' + root.id + '" data-target-lang="' + defaultTargetLang + '" title="' + translateBtnLabel + '">' +
+                  '<i class="fa-solid fa-language"></i> <span class="gb-trans-text">' + (isZh ? '翻译' : 'Translate') + '</span>' +
+                '</button>' +
                 '<button type="button" class="gb-reply-btn" data-reply-to="' + root.id + '" data-author="' + escapeHTML(root.nickname) + '">' +
                   '<i class="fa-solid fa-reply"></i> ' + (isZh ? '回复' : 'Reply') +
                 '</button>' +
@@ -216,12 +315,22 @@
         replies.forEach(function (r) {
           var rTime = formatTime(r.created_at);
           var rAvatar = getAvatarUrl(r.avatar_seed || r.nickname);
+          var isRChinese = isChineseText(r.content);
+          var rTargetLang = isZh ? (isRChinese ? 'en' : 'zh-CN') : (isRChinese ? 'en' : 'zh-CN');
+          var rBtnLabel = isZh ? (isRChinese ? '翻译为英文' : '翻译为中文') : (isRChinese ? 'Translate to EN' : 'Translate to ZH');
+
           html +=
-            '<div class="gb-reply-item">' +
+            '<div class="gb-reply-item" id="drawer-reply-' + r.id + '">' +
               '<div class="gb-avatar-wrap gb-avatar-sm"><img class="gb-avatar" src="' + rAvatar + '" alt="Avatar" loading="lazy" /></div>' +
               '<div class="gb-card-body">' +
                 '<div class="gb-meta"><span class="gb-author">' + escapeHTML(r.nickname) + '</span><span class="gb-time">' + rTime + '</span></div>' +
-                '<div class="gb-text">' + escapeHTML(r.content) + '</div>' +
+                '<div class="gb-text" id="gb-text-' + r.id + '">' + escapeHTML(r.content) + '</div>' +
+                '<div class="gb-translation-box" id="gb-trans-' + r.id + '" style="display: none;"></div>' +
+                '<div class="gb-reply-footer">' +
+                  '<button type="button" class="gb-translate-btn gb-translate-btn-sm" data-msg-id="' + r.id + '" data-target-lang="' + rTargetLang + '" title="' + rBtnLabel + '">' +
+                    '<i class="fa-solid fa-language"></i> <span class="gb-trans-text">' + (isZh ? '翻译' : 'Translate') + '</span>' +
+                  '</button>' +
+                '</div>' +
               '</div>' +
             '</div>';
         });
@@ -324,7 +433,76 @@
     }
   }
 
+  function bindTranslateTriggers() {
+    var transButtons = document.querySelectorAll('.gb-translate-btn');
+    var isZh = document.documentElement.lang === 'zh-CN';
+
+    transButtons.forEach(function (btn) {
+      btn.onclick = async function (e) {
+        e.preventDefault();
+        var msgId = btn.getAttribute('data-msg-id');
+        var targetLang = btn.getAttribute('data-target-lang') || (isZh ? 'en' : 'zh-CN');
+        var box = document.getElementById('gb-trans-' + msgId);
+        var originalTextEl = document.getElementById('gb-text-' + msgId);
+        var labelEl = btn.querySelector('.gb-trans-text');
+
+        if (!box || !originalTextEl) return;
+
+        // Toggle if already translated and visible
+        if (box.style.display !== 'none' && !box.classList.contains('translating')) {
+          box.style.display = 'none';
+          if (labelEl) labelEl.textContent = isZh ? '翻译' : 'Translate';
+          return;
+        }
+
+        // Show cached translation if available
+        if (translationCache[msgId]) {
+          box.innerHTML =
+            '<div class="gb-trans-header">' +
+              '<i class="fa-solid fa-wand-magic-sparkles"></i> <span>' + (targetLang === 'zh-CN' ? '中文翻译 (Gemini)' : 'English Translation (Gemini)') + '</span>' +
+            '</div>' +
+            '<div class="gb-trans-content">' + escapeHTML(translationCache[msgId]) + '</div>';
+          box.style.display = 'block';
+          if (labelEl) labelEl.textContent = isZh ? '收起' : 'Hide';
+          return;
+        }
+
+        // Perform translation call
+        var rawText = originalTextEl.textContent;
+        box.classList.add('translating');
+        box.innerHTML =
+          '<div class="gb-trans-loading">' +
+            '<i class="fa-solid fa-spinner fa-spin"></i> <span>' + (isZh ? 'AI 正在翻译中...' : 'Translating with AI...') + '</span>' +
+          '</div>';
+        box.style.display = 'block';
+        if (labelEl) labelEl.textContent = isZh ? '翻译中' : 'Translating';
+
+        try {
+          var translatedResult = await translateWithGemini(rawText, targetLang);
+          translationCache[msgId] = translatedResult;
+          box.classList.remove('translating');
+          box.innerHTML =
+            '<div class="gb-trans-header">' +
+              '<i class="fa-solid fa-wand-magic-sparkles"></i> <span>' + (targetLang === 'zh-CN' ? '中文翻译 (Gemini)' : 'English Translation (Gemini)') + '</span>' +
+            '</div>' +
+            '<div class="gb-trans-content">' + escapeHTML(translatedResult) + '</div>';
+          if (labelEl) labelEl.textContent = isZh ? '收起' : 'Hide';
+        } catch (err) {
+          box.classList.remove('translating');
+          console.error('Translation error:', err);
+          var errMsg = isZh ? '翻译失败，请稍后重试' : 'Translation failed, please try again';
+          if (err.message === 'NO_API_KEY') {
+            errMsg = isZh ? '请在 js/guestbook-config.js 中配置 Gemini API Key' : 'Please configure Gemini API Key in guestbook-config.js';
+          }
+          box.innerHTML = '<div class="gb-trans-error"><i class="fa-solid fa-triangle-exclamation"></i> ' + escapeHTML(errMsg) + '</div>';
+          if (labelEl) labelEl.textContent = isZh ? '重试' : 'Retry';
+        }
+      };
+    });
+  }
+
   function bindReplyTriggers() {
+    bindTranslateTriggers();
     var buttons = document.querySelectorAll('.gb-reply-btn');
     var isZh = document.documentElement.lang === 'zh-CN';
 

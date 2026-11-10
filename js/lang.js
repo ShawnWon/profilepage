@@ -40,6 +40,11 @@
     'guestbook.compose_title': { en: 'Leave a Message', zh: '留下你的印记' },
     'guestbook.pill_label': { en: 'Guestbook', zh: '留言板' },
     'guestbook.teaser_text': { en: 'Say hi! Leave a message 💬', zh: '留个言呗 💬' },
+    'guestbook.translate_btn': { en: 'Translate', zh: '翻译' },
+    'guestbook.translating': { en: 'Translating...', zh: '翻译中...' },
+    'guestbook.translate_hide': { en: 'Hide translation', zh: '收起翻译' },
+    'guestbook.translate_failed': { en: 'Translation failed', zh: '翻译失败' },
+    'guestbook.translate_need_key': { en: 'Gemini API Key required in config', zh: '请先在配置中填入 Gemini API Key' },
 
     // Hero Subtitle static text if needed
     'hero.static_role': { en: 'Software Developer / System Analyst', zh: '软件工程师 / 系统分析师' },
