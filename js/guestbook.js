@@ -188,6 +188,7 @@
     }
 
     // 3. Client-side free fallback endpoint (ensures it works out of the box)
+    // Try Google's gtx endpoint first
     try {
       var tl = targetLang === 'zh-CN' ? 'zh-CN' : 'en';
       var fallbackUrl = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=' + tl + '&dt=t&q=' + encodeURIComponent(text);
@@ -195,10 +196,23 @@
       var fbData = await resp.json();
       if (fbData && fbData[0]) {
         var translated = fbData[0].map(function (item) { return item[0]; }).join('');
-        return translated;
+        if (translated) return translated;
       }
     } catch (fbErr) {
-      console.warn('Fallback translate failed:', fbErr);
+      console.warn('Google gtx fallback translate failed:', fbErr);
+    }
+
+    // Secondary fallback: MyMemory Translation API (100% public, CORS-enabled for all mobile & desktop browsers)
+    try {
+      var langPair = targetLang === 'zh-CN' ? 'en|zh-CN' : 'zh-CN|en';
+      var mmUrl = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=' + langPair;
+      var mmResp = await fetch(mmUrl);
+      var mmData = await mmResp.json();
+      if (mmData && mmData.responseData && mmData.responseData.translatedText) {
+        return mmData.responseData.translatedText;
+      }
+    } catch (mmErr) {
+      console.warn('MyMemory fallback translate failed:', mmErr);
     }
 
     throw new Error('TRANSLATION_FAILED');
