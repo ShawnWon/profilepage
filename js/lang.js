@@ -323,9 +323,78 @@
     return (window.currentLanguage === 'zh') ? { words: wordsZh, isZh: true } : { words: wordsEn, isZh: false };
   };
 
+  // Detect whether visitor is likely from Chinese Mainland (via Browser language, timezone, or free GeoIP)
+  function detectIsChinaVisitor(callback) {
+    // 1. Instant check via browser navigator.languages & timezone
+    var navLangs = navigator.languages || [navigator.language || navigator.userLanguage || ''];
+    var primaryLang = (navLangs[0] || '').toLowerCase();
+    var isZhLang = primaryLang.indexOf('zh') === 0;
+
+    var tz = '';
+    try {
+      tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    } catch (e) {}
+    var isChinaTz = (tz === 'Asia/Shanghai' || tz === 'Asia/Chongqing' || tz === 'Asia/Harbin' || tz === 'Asia/Urumqi');
+
+    // If browser language is zh-CN or timezone is mainland China, immediately default to zh
+    if (isChinaTz || (isZhLang && primaryLang.indexOf('zh-cn') !== -1)) {
+      callback('zh');
+      return;
+    }
+
+    // 2. Asynchronous GeoIP check (fast, free, privacy-friendly country check)
+    var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    var timer = setTimeout(function() {
+      if (controller) controller.abort();
+      callback('en'); // fallback to English on timeout
+    }, 1800);
+
+    fetch('https://ipapi.co/json/', { signal: controller ? controller.signal : undefined })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        clearTimeout(timer);
+        if (data && data.country_code === 'CN') {
+          callback('zh');
+        } else {
+          callback('en');
+        }
+      })
+      .catch(function() {
+        clearTimeout(timer);
+        // Fallback to English if GeoIP check fails or is blocked
+        callback('en');
+      });
+  }
+
   function initLang() {
-    var savedLang = localStorage.getItem(STORAGE_KEY) || 'en';
-    applyLanguage(savedLang);
+    var userExplicit = false;
+    try {
+      userExplicit = localStorage.getItem(STORAGE_KEY + '_explicit') === 'true';
+    } catch (e) {}
+
+    var savedLang = null;
+    try {
+      savedLang = localStorage.getItem(STORAGE_KEY);
+    } catch (e) {}
+
+    // If user has explicitly chosen before, respect their choice
+    if (userExplicit && savedLang) {
+      applyLanguage(savedLang);
+    } else {
+      // Fast heuristic: Apply browser-based default first to prevent flash of wrong language
+      var initialGuess = (navigator.language || '').toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en';
+      applyLanguage(initialGuess);
+
+      // Verify with China mainland IP / timezone detection
+      detectIsChinaVisitor(function (detectedLang) {
+        if (!userExplicit) {
+          applyLanguage(detectedLang);
+          try {
+            localStorage.setItem(STORAGE_KEY, detectedLang);
+          } catch (e) {}
+        }
+      });
+    }
 
     var langToggleBtn = document.getElementById('langToggleBtn');
     if (langToggleBtn) {
@@ -336,6 +405,7 @@
         var nextLang = (currentLang === 'zh') ? 'en' : 'zh';
         try {
           localStorage.setItem(STORAGE_KEY, nextLang);
+          localStorage.setItem(STORAGE_KEY + '_explicit', 'true');
         } catch (err) {
           // Ignore storage quota
         }

@@ -32,10 +32,32 @@
         }
     }
 
+    // Determine daytime default (7:00 AM to 7:00 PM is Day/Classic, otherwise Night/Dark)
+    function getTimeBasedTheme() {
+        try {
+            var currentHour = new Date().getHours();
+            // 7:00 to 18:59 is daytime
+            return (currentHour >= 7 && currentHour < 19) ? 'classic' : 'dark';
+        } catch (e) {
+            return 'dark';
+        }
+    }
+
     // Initialize as soon as DOM is interactive
     function initTheme() {
-        var savedTheme = localStorage.getItem(STORAGE_KEY) || 'dark';
-        applyTheme(savedTheme);
+        var userExplicit = false;
+        try {
+            userExplicit = localStorage.getItem(STORAGE_KEY + '_explicit') === 'true';
+        } catch (e) {}
+
+        var savedTheme = null;
+        try {
+            savedTheme = localStorage.getItem(STORAGE_KEY);
+        } catch (e) {}
+
+        // If user hasn't explicitly toggled, auto-switch based on local time (7am - 7pm Day/Classic)
+        var themeToApply = (userExplicit && savedTheme) ? savedTheme : getTimeBasedTheme();
+        applyTheme(themeToApply);
 
         var toggleBtn = document.getElementById('themeToggleBtn');
         if (toggleBtn) {
@@ -46,6 +68,7 @@
                 var nextTheme = (currentTheme === 'classic') ? 'dark' : 'classic';
                 try {
                     localStorage.setItem(STORAGE_KEY, nextTheme);
+                    localStorage.setItem(STORAGE_KEY + '_explicit', 'true');
                 } catch (err) {
                     // Ignore localStorage quotas / disabled
                 }
